@@ -10,6 +10,7 @@
       "store/*": ["src/store/*"],
       "styles/*": ["src/styles/*"],
       "@src/*": ["src/*"],
+      "apollo/*": ["src/apollo/*"]
     }
   }
 }

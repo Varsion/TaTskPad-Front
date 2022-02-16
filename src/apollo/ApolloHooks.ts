@@ -1,13 +1,13 @@
-import { useCallback, useEffect } from 'react'
-import Snackbar from '@mui/material/Snackbar';
+import { useCallback, useEffect } from 'react';
 import { ApolloError } from "@apollo/client";
+import { toast } from 'react-toastify';
 
 import { redirectToLogin, isUnauthenticated } from "helpers/unauthenticated"
 
 export const HandlerErrors = (errors?: Array<{ message: string }>) => {
   if (errors) {
     const errorsArr = errors.map(({ message }) => message)
-    //show error message
+    toast.error(errorsArr.join('; '))
   }
 }
 
@@ -25,7 +25,7 @@ export function useApolloErrorHandler(
         if (handleNotFoundCallback) {
           return handleNotFoundCallback(errors)
         }
-        // show error message
+        toast.error(errors.join('; '))
       }
     },
     [handleNotFoundCallback]

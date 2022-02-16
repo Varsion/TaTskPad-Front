@@ -1,6 +1,7 @@
+import { toast } from "react-toastify";
 const UNAUTHENTICATED = "unauthenticated";
 const showUnauthenticatedTip = () => {
-  // show error message
+  toast.error("Your login session has expired");
 }
 
 export const isUnauthenticated = (errors: string[]) => {

@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 
 import ParticlesBg from 'particles-bg';
 import '../../styles/app.css';
@@ -29,7 +30,7 @@ const sign_up = (
     </Typography>
 
     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-      Already have an account? <a href="/sign_in">sign in now</a>
+      Already have an account? <Link href="/#/sign_in">{'sign in'}</Link>
     </Typography>
 
     <FormGroup>

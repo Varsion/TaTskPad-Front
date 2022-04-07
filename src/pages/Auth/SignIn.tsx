@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import FormGroup from '@mui/material/FormGroup';
+import Link from '@mui/material/Link';
 
 import ParticlesBg from 'particles-bg';
 import '../../styles/app.css';
@@ -25,7 +26,7 @@ const sign_in = (
     </Typography>
 
     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Don't have a account? <a href="/sign_up">sign up now</a>
+        Don't have a account? <Link href="/#/sign_up" variant="body2">{'sign up now'}</Link>
     </Typography>
     <FormGroup>
       <TextField fullWidth label="Email" id="email" margin="normal" required/>

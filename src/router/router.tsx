@@ -6,15 +6,15 @@ import {
 } from "react-router-dom";
 import SignIn from '../pages/Auth/SignIn';
 import SignUp from '../pages/Auth/SignUp';
-import Kanban from '../pages/Kanban/Kanban';
+import Dashboard from '../pages/Dashboard/Dashboard';
 
 export default function Router() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={Kanban} />
-        <Route path="/sign_in" element={SignIn} />
-        <Route path="/sign_up" element={SignUp} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/sign_in" element={<SignIn />} />
+        <Route path="/sign_up" element={<SignUp />} />
       </Routes>
     </HashRouter>
   )

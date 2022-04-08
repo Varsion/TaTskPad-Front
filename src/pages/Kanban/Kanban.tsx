@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
-  Box, Drawer, Toolbar, List, Typography, Divider, 
-  ListItem, ListItemIcon, ListItemText, Avatar, ListItemButton,
-  Collapse
+  Box, Drawer, Toolbar, List, Divider, ListItemButton,
+  ListItem, ListItemIcon, ListItemText, Avatar, styled,
+  Collapse, Breadcrumbs, Link, TextField, Grid, Paper,
+  Button, Typography, Stack, Tab, Card, CardActions, CardContent,
+  Chip,
 } from '@mui/material';
 import MapIcon from '@mui/icons-material/Map';
 import ExpandLess from '@mui/icons-material/ExpandLess';
@@ -12,9 +14,21 @@ import ViewWeekIcon from '@mui/icons-material/ViewWeek';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
 import WidgetsIcon from '@mui/icons-material/Widgets';
+import CodeIcon from '@mui/icons-material/Code';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import SearchIcon from '@mui/icons-material/Search';
+import ShareIcon from '@mui/icons-material/Share';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
 
 import StringAvatar from '../../components/Functions/StringAvatar';
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 export default function Kanban() {
 
@@ -42,11 +56,11 @@ export default function Kanban() {
     <Toolbar />
     <Box sx={{ overflow: 'auto' }}>
       <List>
-        <ListItem sx={{ pl: 3, mt: 2 }}>
+        <ListItem sx={{ pl: 4, mt: 2 }}>
           <ListItemIcon>
             <Avatar {...StringAvatar('Chong Yaa')} />
           </ListItemIcon>
-          <ListItemText primary={'ChongYaaa'} />
+          <ListItemText primary={'ChongYaa ORG'} />
         </ListItem>
       </List>
       {/* Planning */}
@@ -116,49 +130,21 @@ export default function Kanban() {
         <Collapse in={dev} timeout="auto" unmountOnExit>
 
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 6 }}>
-              <ListItemIcon>
-                <MapIcon />
-              </ListItemIcon>
-              <ListItemText primary="Route Map" />
-            </ListItemButton>
 
-            <ListItemButton sx={{ pl: 6 }}>
+            <ListItemButton sx={{ pl: 4 }}>
               <ListItemIcon>
-                <ListAltIcon />
+                <CodeIcon />
               </ListItemIcon>
-              <ListItemText primary="ToDo List" />
-            </ListItemButton>
-
-            <ListItemButton sx={{ pl: 6 }}>
-              <ListItemIcon>
-                <ViewWeekIcon />
-              </ListItemIcon>
-              <ListItemText primary="Sprint" />
-            </ListItemButton>
-
-            <ListItemButton sx={{ pl: 6 }}>
-              <ListItemIcon>
-                <AutoGraphIcon />
-              </ListItemIcon>
-              <ListItemText primary="Report" />
+              <ListItemText primary="Codes" />
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 4 }}>
               <ListItemIcon>
-                <CorporateFareIcon />
+                <AccountTreeIcon />
               </ListItemIcon>
-              <ListItemText primary="Matters" />
-            </ListItemButton>
-
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <WidgetsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Blocks" />
+              <ListItemText primary="Releases" />
             </ListItemButton>
           </List>
-
         </Collapse>
       </List>
       {/* Development */}
@@ -168,20 +154,279 @@ export default function Kanban() {
     </Drawer>
     <Box sx={{ flexGrow: 1, p: 3 }}>
       <Toolbar />
-      <Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-        enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-        imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-        Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-        Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-        adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-        nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-        leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-        feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-        consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-        sapien faucibus et molestie ac.
-      </Typography>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/#/">
+          Projects
+        </Link>
+        <Link
+          underline="hover"
+          color="inherit"
+          href="/#/"
+        >
+          TaTskPad
+        </Link>
+        <Link
+          underline="hover"
+          color="text.primary"
+          href="/#/"
+          aria-current="page"
+        >
+          Master Board
+        </Link>
+      </Breadcrumbs>
+      <Box sx={{ display: 'flex', flexGrow: 1, mt:3 }}>
+
+        <Grid container spacing={2}>
+
+          {/* Header */}
+          <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography variant="h4" component="h2">
+              Sprint 1
+            </Typography>
+          </Grid>
+          <Grid item xs={8} sx={{ display: 'flex', alignItems: 'center' }}>
+            <TextField fullWidth id="outlined-basic" label="Search in Current Board" variant="outlined" size="small"/> 
+            <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5, fontSize:30 }} />
+          </Grid>
+          <Grid item xs={2}>
+            <Stack direction="row-reverse" spacing={1}>
+              <Button variant="contained" size="small" endIcon={<DoneAllIcon />}>
+                Finish
+              </Button>
+              <Button variant="contained" size="small" endIcon={<ShareIcon />}>
+                Share
+              </Button>
+            </Stack>
+          </Grid>
+          {/* Header */}
+
+          <Grid item xs={4}>
+            <Item>
+              <Tab label="ToDo" disabled/>
+
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+
+            </Item>
+          </Grid>
+          <Grid item xs={4}>
+            <Item>
+              <Tab label="Doing" disabled/>
+
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+            </Item>
+          </Grid>
+          <Grid item xs={4}>
+            <Item>
+              <Tab label="Done" disabled/>
+
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+              <br />
+              <Card variant="outlined" sx={{textAlign: 'left'}}>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Login Function Request
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Login Function Request
+                  Login Function Request
+                  Login Function Request
+                </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Chip label="JOB-301" variant="outlined"/>
+                  <Chip label="8" />
+                  <Avatar></Avatar>
+                </CardActions>
+              </Card>
+            </Item>
+          </Grid>
+        </Grid>
+      </Box>
     </Box>
   </Box>
   )

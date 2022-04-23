@@ -47,10 +47,10 @@ const SignUpFrom = () => {
 
 
   const handleInputChange = (e: any) => {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
     SetValues({
       ...values,
-      [name]: value,
+      [id]: value,
     });
   };
 

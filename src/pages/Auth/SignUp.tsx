@@ -9,7 +9,7 @@ import Link from '@mui/material/Link';
 import ParticlesBg from 'particles-bg';
 import '../../styles/app.css';
 import logo from "../../assets/logo.png"
-import SignUpFrom from '../../components/SignUpFrom';
+import SignUpForm from '../../components/SignUpForm';
 
 
 export default function SignIn() {
@@ -32,7 +32,7 @@ export default function SignIn() {
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Already have an account? <Link href="/#/sign_in">{'sign in'}</Link>
           </Typography>
-          <SignUpFrom />
+          <SignUpForm />
         </CardContent>
       </Card>
     </Container>

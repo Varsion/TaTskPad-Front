@@ -14,7 +14,7 @@ interface SignUpValues {
 
 const SignUpFrom = () => {
 
-  // const [signUp, { data, error }] = useMutation(SIGN_UP)
+  const [signUp, { data, error }] = useMutation(SIGN_UP)
 
   // const [name, setName] = useState('');
   // const [email, setEmail] = useState('');
@@ -36,13 +36,20 @@ const SignUpFrom = () => {
 
   const [values, SetValues] = useState(defaultValues)
 
-  const SignUp = (e: any) => {
-    console.log(e);
-  }
-
   const handleSubmit = (event: any) => {
     event.preventDefault();
     console.log(values);
+    let { name, email, password, confirm } = values
+    signUp({
+      variables: {
+        input: {
+          name,
+          email,
+          password
+        }
+      }
+    })
+
   }
 
 

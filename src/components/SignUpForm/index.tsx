@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { TextField, Box, Button, useFormControl, FormControl, FormGroup } from '@mui/material';
+import { TextField, Box, Button, FormGroup } from '@mui/material';
 import { SIGN_UP } from '../../actions/auth';
 import { NotifyError, NotifySuccess } from '../Notify';
 
@@ -18,17 +18,6 @@ const SignUpForm = () => {
   const [signUp, { data, error, loading }] = useMutation(SIGN_UP)
   const account = data?.signUp?.account
   const errors = data?.signUp?.errors
-
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirm, setConfirm] = useState('');
-
-
-  // const handleName = () => {}
-  // const handleEmail = () => {}
-  // const handlePassword = () => {}
-  // const handleConfirm = () => {}
 
   const defaultValues:SignUpValues = {
     name: '',

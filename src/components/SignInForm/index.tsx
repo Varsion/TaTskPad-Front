@@ -26,9 +26,7 @@ const SignInForm = () => {
     if (account) {
       localStorage.setItem('token', account?.token)
       NotifySuccess('Sign in success')
-      setTimeout(() => {
-        window.location.href = '/#/'
-      }, 3000)
+      window.location.href = '/#/'
     }
     if (errors) {
       NotifyError(errors[0].message)

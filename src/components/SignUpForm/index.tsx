@@ -47,9 +47,7 @@ const SignUpForm = () => {
   useEffect(() => {
     if (account) {
       NotifySuccess('Account created successfully')
-      setTimeout(() => {
-        window.location.href = '/#/sign_in'
-      }, 3000)
+      window.location.href = '/#/sign_in'
     }
     if (errors) {
       NotifyError(errors[0].attribute+ ' ' + errors[0].message)

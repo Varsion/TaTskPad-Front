@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useState, useEffect } from "react";
+import LoadingButton from '@mui/lab/LoadingButton';
 import { Box, Button, FormGroup, TextField } from "@mui/material"
 import { SIGN_IN } from '../../actions/auth';
 import { NotifyError, NotifySuccess } from '../Notify';
@@ -8,6 +9,7 @@ import { useMutation } from '@apollo/client'
 const SignInForm = () => {
   const [signIn, { data, error, loading }] = useMutation(SIGN_IN)
   const account = data?.signIn?.account
+  const organizations = data?.signIn?.account?.organizations
   const errors = data?.signIn?.errors
 
   interface SignInValues {
@@ -24,11 +26,14 @@ const SignInForm = () => {
     if (account) {
       localStorage.setItem('token', account?.token)
       NotifySuccess('Sign in success')
+      setTimeout(() => {
+        window.location.href = '/#/'
+      }, 3000)
     }
     if (errors) {
       NotifyError(errors[0].message)
     }
-  }, [account, errors, loading])
+  }, [account, organizations, errors, loading])
 
   const [values, SetValues] = useState(defaultValues)
 
@@ -63,7 +68,12 @@ const SignInForm = () => {
           display: 'flex',
           justifyContent: 'center',
         }}>
-          <Button variant="contained" type="submit">Sign In</Button>
+          <LoadingButton 
+            loading={loading} 
+            variant="contained" 
+            type="submit">
+              Sign In
+          </LoadingButton>
         </Box>
       </form>
     </FormGroup>

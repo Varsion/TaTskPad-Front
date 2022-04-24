@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation } from '@apollo/client'
+import LoadingButton from '@mui/lab/LoadingButton';
 import { TextField, Box, Button, FormGroup } from '@mui/material';
 import { SIGN_UP } from '../../actions/auth';
 import { NotifyError, NotifySuccess } from '../Notify';
@@ -82,7 +83,13 @@ const SignUpForm = () => {
           display: 'flex',
           justifyContent: 'center',
         }}>
-          <Button variant="contained" type='submit' >Sign Up</Button>
+          <LoadingButton 
+            loading={loading}
+            variant="contained" 
+            type='submit' >
+              Sign Up
+          </LoadingButton>
+          
         </Box>
       </form>
     </FormGroup>

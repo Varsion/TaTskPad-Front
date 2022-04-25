@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import HeaderBar from '../../components/Items/HeaderBar';
 import { useQuery } from '@apollo/client';
 import { 
@@ -9,6 +9,7 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import TabPanel from '../../components/Items/TabPanel';
 import CreateOrganization from '../../components/OrganizationForms/CreateOrganization';
+import JoinOrganization from '../../components/OrganizationForms/JoinOrganization';
 import OrganizationCard from '../../components/OrganizationForms/OrganizationCard';
 import { GET_ORGANIZATION } from '../../actions/organization';
 
@@ -104,7 +105,7 @@ const Organization = () => {
               <CreateOrganization />
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
-              Item Two
+              <JoinOrganization />
             </TabPanel>
           </Box>
         </Box>

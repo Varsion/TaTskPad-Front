@@ -18,12 +18,14 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`tab-${index}`}
       {...other}
     >
+    <Box>
       {value === index && (
         // eslint-disable-next-line react/jsx-no-undef
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component='div'>{children}</Typography>
         </Box>
       )}
+    </Box>
     </div>
   );
 }

@@ -67,8 +67,8 @@ const Organization = () => {
             {
               loading ? <p>Loading...</p> :
                 Organizations.length > 0 ? (
-                  Organizations.map((org: any) => (
-                    <OrganizationCard id={org.id} name={org.name} logoUrl={org.logoUrl} />
+                  Organizations.map((org: any, index: number) => (
+                    <OrganizationCard id={org.id} name={org.name} logoUrl={org.logoUrl} key={index}/>
                   ))) : (
                     <Grid item xs={12}>
                       <Toolbar />

@@ -4,13 +4,14 @@ import {
 } from '@mui/material';
 
 interface OrganizationProps {
+  children?: React.ReactNode;
   id: string;
   name: string;
   logoUrl: string;
 }
 
 const OrganizationCard = (props: OrganizationProps) => {
-  const { id, name, logoUrl } = props;
+  const { id, name, logoUrl, ...other } = props;
   
   const enterOrganization = () => {
     console.log(`Entering organization` + id );

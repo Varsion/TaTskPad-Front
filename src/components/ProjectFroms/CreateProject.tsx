@@ -38,7 +38,7 @@ const CreateProject = (props: ProjectFrom) => {
       }, 5000)
     }
     if (errors) {
-      NotifyError(errors[0].message)
+      NotifyError(errors[0].attribute + ' ' + errors[0].message)
     }
   }, [project, errors, loading, error])
 

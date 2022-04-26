@@ -3,6 +3,7 @@ import {
    Card, CardActionArea, CardContent, CardMedia, Grid, Typography,
 } from '@mui/material';
 
+import { useNavigate } from 'react-router-dom'
 interface OrganizationProps {
   children?: React.ReactNode;
   id: string;
@@ -12,14 +13,17 @@ interface OrganizationProps {
 
 const OrganizationCard = (props: OrganizationProps) => {
   const { id, name, logoUrl, ...other } = props;
-  
-  const enterOrganization = () => {
-    console.log(`Entering organization` + id );
+
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/project/" + id);
   }
+
   return (
     <Grid item xs={4}>
       <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea onClick={enterOrganization}>
+        <CardActionArea onClick={onClick}>
           {
             logoUrl ? 
             <CardMedia

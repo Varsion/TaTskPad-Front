@@ -15,7 +15,9 @@ import CodeIcon from '@mui/icons-material/Code';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 
 import StringAvatar from '../../components/Functions/StringAvatar';
-import Board from './Pages/Board';
+import HeaderBar from '../../components/Items/HeaderBar';
+import Board from './Board';
+import Backlog from './Backlog';
 
 export default function Kanban() {
 
@@ -32,6 +34,7 @@ export default function Kanban() {
 
   return(
     <Box sx={{ flexGrow: 1, display: 'flex' }}>
+    <HeaderBar />
     <Drawer
       variant="permanent"
       sx={{
@@ -71,7 +74,7 @@ export default function Kanban() {
               <ListItemIcon>
                 <ListAltIcon />
               </ListItemIcon>
-              <ListItemText primary="ToDo List" />
+              <ListItemText primary="ToDo" />
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 6 }}>

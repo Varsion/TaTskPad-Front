@@ -2,7 +2,8 @@ import React, { useState, useEffect} from 'react';
 import HeaderBar from '../../components/Items/HeaderBar';
 import { 
   Box, Grid, Toolbar, Breadcrumbs, 
-  Button, Typography, Modal, Tab, Tabs
+  Button, Typography, Modal, Tab, Tabs,
+  Pagination
 } from '@mui/material';
 
 import AddIcon from '@mui/icons-material/Add';
@@ -55,9 +56,10 @@ const Project = () => {
             <Button sx={{float: "right"}} variant="contained" endIcon={<AddIcon />} onClick={handleModalOpen}>New</Button>
           </Grid>
           <Grid item xs={12}>
-            <ProjectTable organizationId={organizationId} />
+              <ProjectTable organizationId={organizationId} />
           </Grid>
         </Grid>
+        <Pagination count={1} color="primary" sx={{position: 'absolute', bottom: 100, right:150}} />
       </Box>
 
       <Modal

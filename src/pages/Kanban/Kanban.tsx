@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Drawer,
@@ -30,6 +32,7 @@ import Board from "./Board";
 import Backlog from "./Backlog";
 
 export default function Kanban() {
+  const navigate = useNavigate();
   const [plan, setPlan] = useState(true);
   const [dev, setDev] = useState(true);
 
@@ -41,6 +44,9 @@ export default function Kanban() {
     setDev(!dev);
   };
 
+  const handleToBacklog = () => {
+    // navigate("/Backlog");
+  };
   return (
     <Box sx={{ flexGrow: 1, display: "flex" }}>
       <HeaderBar />
@@ -78,7 +84,7 @@ export default function Kanban() {
                   <ListItemText primary="Route Map" />
                 </ListItemButton>
 
-                <ListItemButton sx={{ pl: 6 }}>
+                <ListItemButton sx={{ pl: 6 }} onClick={handleToBacklog}>
                   <ListItemIcon>
                     <ListAltIcon />
                   </ListItemIcon>

@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Box, Toolbar, Breadcrumbs, Link, Grid, 
-  Typography, InputLabel, MenuItem,
+  Typography, InputLabel, MenuItem, Divider,
 } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -37,18 +37,26 @@ export default function IssuePage() {
         <Grid container spacing={2}>
           {/* Header */}
           <Grid item xs={8}>
-            <Typography variant="h6" component="h4">
-              Add daily payout schedule
-            </Typography>
-            <h4>描述</h4>
-            <Typography variant="body1" gutterBottom>
-              Add "daily" payout schedule option in payout account setting
-              Add "daily" payout schedule option in payout account setting
-              Add "daily" payout schedule option in payout account setting
-              Add "daily" payout schedule option in payout account setting
-              Add "daily" payout schedule option in payout account setting
-              Add "daily" payout schedule option in payout account setting
-            </Typography>
+            <Box sx={{minHeight: 600}}>
+              <Typography variant="h5">
+                Add daily payout schedule
+              </Typography>
+              <br />
+              <Typography variant="h6"> Description </Typography>
+              <br />
+              <Typography variant="body1" gutterBottom>
+                Add "daily" payout schedule option in payout account setting
+                Add "daily" payout schedule option in payout account setting
+                Add "daily" payout schedule option in payout account setting
+                Add "daily" payout schedule option in payout account setting
+                Add "daily" payout schedule option in payout account setting
+                Add "daily" payout schedule option in payout account setting
+              </Typography>
+            </Box>
+            <Divider />
+            <Box>
+              
+            </Box>
           </Grid>
           <Grid item xs={4}>
             <Grid container direction="column" alignItems="stretch">

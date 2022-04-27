@@ -154,8 +154,8 @@ export default function Kanban() {
         </Box>
       </Drawer>
       {/* <Board /> */}
-      {/* <Backlog /> */}
-      <IssuePage />
+      <Backlog />
+      {/* <IssuePage /> */}
     </Box>
   );
 }

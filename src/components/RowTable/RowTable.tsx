@@ -41,8 +41,8 @@ function createData(
     protein,
     price,
     history: [
-      { date: "2020-01-05", customerId: "11091700", amount: 3 },
-      { date: "2020-01-02", customerId: "Anonymous", amount: 1 },
+      { date: "2020-01-05", customerId: "11091700" },
+      { date: "2020-01-02", customerId: "Anonymous" },
     ],
   };
 }
@@ -82,8 +82,6 @@ function Row(props: { row: ReturnType<typeof createData> }) {
                     <MinTable
                       date={historyRow.date}
                       customerId={historyRow.customerId}
-                      amount={historyRow.amount}
-                      price={row.price}
                     />
                   ))}
                 </TableBody>

@@ -14,16 +14,9 @@ import {
   Typography,
 } from "@mui/material";
 
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import MinTable from "./MinTable";
-// const useRowStyles = makeStyles({
-//   root: {
-//     "& > *": {
-//       borderBottom: "unset",
-//     },
-//   },
-// });
 
 function createData(name: string, price: number) {
   return {
@@ -39,11 +32,10 @@ function createData(name: string, price: number) {
 function Row(props: { row: ReturnType<typeof createData> }) {
   const { row } = props;
   const [open, setOpen] = useState(false);
-  //   const classes = useRowStyles();
 
   return (
     <React.Fragment>
-      <TableRow>
+      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
           <IconButton
             aria-label="expand row"
@@ -78,12 +70,10 @@ function Row(props: { row: ReturnType<typeof createData> }) {
     </React.Fragment>
   );
 }
-
 const rows = [
-  createData("To-do list", 159),
+  createData("Frozen yoghurt", 159),
   createData("Ice cream sandwich", 237),
 ];
-
 export default function CollapsibleTable() {
   return (
     <TableContainer component={Paper}>

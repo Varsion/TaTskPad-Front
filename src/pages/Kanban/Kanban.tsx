@@ -30,6 +30,7 @@ import StringAvatar from "../../components/Functions/StringAvatar";
 import HeaderBar from "../../components/Items/HeaderBar";
 import Board from "./Board";
 import Backlog from "./Backlog";
+import IssuePage from "./IssuePage";
 
 export default function Kanban() {
   const navigate = useNavigate();
@@ -153,7 +154,8 @@ export default function Kanban() {
         </Box>
       </Drawer>
       {/* <Board /> */}
-      <Backlog />
+      {/* <Backlog /> */}
+      <IssuePage />
     </Box>
   );
 }

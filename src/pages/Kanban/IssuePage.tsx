@@ -6,6 +6,7 @@ import {
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import IssueStatusCard from "../../components/Issue/IssueStatusCard";
+import CreateComment from "../../components/Comment/CreateComment";
 
 export default function IssuePage() {
   const [age, setAge] = React.useState("");
@@ -55,7 +56,7 @@ export default function IssuePage() {
             </Box>
             <Divider />
             <Box>
-              
+              <CreateComment />
             </Box>
           </Grid>
           <Grid item xs={4}>

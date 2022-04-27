@@ -65,7 +65,7 @@ const Organization = () => {
           <Grid item xs={4}>
             <Breadcrumbs aria-label="breadcrumb">
               <Typography variant="h5" color="text.primary">
-                Organization
+                hello
               </Typography>
             </Breadcrumbs>
           </Grid>

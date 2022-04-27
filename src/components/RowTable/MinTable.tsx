@@ -1,28 +1,21 @@
 import React, { useState } from "react";
-// import { makeStyles } from '@material-ui/styles';
 import {
   Box,
   Typography,
   Card,
   CardActions,
-  CardContent,
-  Button,
+  CardContent
 } from "@mui/material";
 interface PropsType {
   date: any;
   customerId: any;
+  key: any;
 }
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
-export default function MinTable({ date, customerId }: PropsType) {
+export default function MinTable(props: PropsType) {
+
+  const { date, customerId, key } = props;
   return (
-    <Box margin={3}>
+    <Box margin={3} key={key}>
       {" "}
       <Card sx={{ minWidth: 275 }}>
         <CardContent>

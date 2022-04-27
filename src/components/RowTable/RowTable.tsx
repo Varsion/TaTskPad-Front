@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { makeStyles } from '@material-ui/styles';
 import {
   Collapse,
   Box,
@@ -9,14 +8,13 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TableRow,
-  Typography,
 } from "@mui/material";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import MinTable from "./MinTable";
+import { IndeterminateCheckBox } from "@mui/icons-material";
 
 function createData(name: string, price: number) {
   return {
@@ -55,10 +53,11 @@ function Row(props: { row: ReturnType<typeof createData> }) {
             <Box margin={1}>
               <Table size="small" aria-label="purchases">
                 <TableBody>
-                  {row.history.map((historyRow) => (
+                  {row.history.map((historyRow, index) => (
                     <MinTable
                       date={historyRow.date}
                       customerId={historyRow.customerId}
+                      key={index}
                     />
                   ))}
                 </TableBody>

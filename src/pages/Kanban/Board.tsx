@@ -5,7 +5,7 @@ import {
   Button, Typography, Stack, Tab, Collapse
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import ShareIcon from '@mui/icons-material/Share';
+import AddIcon from '@mui/icons-material/Add';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -60,8 +60,8 @@ export default function Board() {
             <Button variant="contained" size="small" endIcon={<DoneAllIcon />}>
               Finish
             </Button>
-            <Button variant="contained" size="small" endIcon={<ShareIcon />}>
-              Share
+            <Button variant="contained" size="small" endIcon={<AddIcon />}>
+              Create
             </Button>
           </Stack>
         </Grid>

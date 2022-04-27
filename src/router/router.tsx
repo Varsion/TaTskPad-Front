@@ -11,9 +11,10 @@ export default function Router() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<Organization />} />
+        {/* <Route path="/" element={<SignUp />} /> */}
+        <Route path="/" element={<Kanban />} />
+        <Route path="/organization" element={<Organization />} />
         <Route path="/project/:id" element={<Project />} />
-        <Route path="/kanban" element={<Kanban />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/sign_in" element={<SignIn />} />

@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import {
-  Box,
-  Typography,
-  Card,
-  CardActions,
-  CardContent
+  Box, Typography, Card, CardContent
 } from "@mui/material";
 interface PropsType {
   date: any;
   customerId: any;
-  key: any;
 }
 export default function MinTable(props: PropsType) {
 
-  const { date, customerId, key } = props;
+  const { date, customerId } = props;
   return (
-    <Box margin={3} key={key}>
+    <Box margin={3} key={customerId}>
       {" "}
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 275 }} key={customerId}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {date}

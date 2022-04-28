@@ -1,21 +1,16 @@
-import * as React from "react";
+import React, {useEffect} from "react";
 import {
-  Box,
-  Toolbar,
-  Breadcrumbs,
-  Link,
-  Grid,
-  TextField,
-  Button,
-  Modal,
-  Tab,
-  Tabs,
+  Box, Toolbar, Breadcrumbs, Link, Grid, TextField, 
+  Button, Modal, Tab, Tabs,
 } from "@mui/material";
 import RowTable from "../../components/RowTable/RowTable";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from '@mui/icons-material/Add';
 import TabPanel from "../../components/Items/TabPanel";
 import CreateBucket from "../../components/Bucket/CreateBucket";
+import { NotifyError, NotifySuccess } from "../../components/Notify";
+import { GET_BUCKETS } from "../../actions/bucket";
+import { useQuery } from "@apollo/client";
 
 const style = {
   position: "absolute" as "absolute",
@@ -35,8 +30,27 @@ export default function Backlog() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
+  const projectId = "26d1021e-3793-48cb-b943-595758139690"
   const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
+
+  const { loading, error, data } = useQuery(GET_BUCKETS,{
+    variables: {projectId}
+  });
+
+  const buckets = data?.project?.buckets;
+
+  useEffect(() => {
+    if (buckets) {
+      console.log(buckets);
+    }
+    if (error) {
+      NotifyError(error.message);
+      console.log(error);
+    }
+
+  },[buckets, error]);
+  
   
   return (
     <Box sx={{ flexGrow: 1, p: 3 }}>
@@ -77,9 +91,14 @@ export default function Backlog() {
         </Grid>
       </Box>
       <Box sx={{ display: "flex", flexGrow: 1, mt: 3 }}>
-        <RowTable />
+        {
+          loading ? 
+            <Box>Loading...</Box> : 
+              buckets && buckets?.length > 0 ? 
+                <RowTable buckets={buckets} /> :
+                  <Box sx={{ textAlign: "center" }}>No buckets found</Box>
+        }
       </Box>
-
       <Modal
         open={modalOpen}
         onClose={handleModalClose}
@@ -92,7 +111,7 @@ export default function Backlog() {
           </Tabs>
           <Box>
           <TabPanel value={0} index={0}>
-              <CreateBucket projectId={'77836925-9600-494e-a982-0cd2ff02cbaf'} />
+              <CreateBucket projectId={projectId} />
             </TabPanel>
           </Box>
         </Box>

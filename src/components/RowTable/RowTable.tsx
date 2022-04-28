@@ -1,33 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Collapse,
-  Box,
-  Paper,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
+  Collapse, Box, Paper, IconButton, Table, TableBody, TableCell, TableContainer, TableRow,
 } from "@mui/material";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import MinTable from "./MinTable";
-import { IndeterminateCheckBox } from "@mui/icons-material";
-
-function createData(name: string, price: number) {
-  return {
-    name,
-    price,
-    history: [
-      { date: "2020-01-05", customerId: "11091700" },
-      { date: "2020-01-02", customerId: "Anonymous" },
-    ],
-  };
+interface BucketRow {
+  id: string;
+  name: string;
+  isRelease: boolean;
 }
 
-function Row(props: { row: ReturnType<typeof createData> }) {
+interface BucketProps {
+  buckets: BucketRow[];
+}
+
+function Row(props: { row: BucketRow }) {
   const { row } = props;
   const [open, setOpen] = useState(false);
 
@@ -51,17 +40,13 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
-              <Table size="small" aria-label="purchases">
-                <TableBody>
-                  {row.history.map((historyRow, index) => (
-                    <MinTable
-                      date={historyRow.date}
-                      customerId={historyRow.customerId}
-                      key={index}
-                    />
-                  ))}
-                </TableBody>
-              </Table>
+              <Box>
+                <MinTable
+                  date={"123"}
+                  customerId={"123"}
+                  key={"123"}
+                />
+              </Box>
             </Box>
           </Collapse>
         </TableCell>
@@ -69,17 +54,19 @@ function Row(props: { row: ReturnType<typeof createData> }) {
     </React.Fragment>
   );
 }
-const rows = [
-  createData("Frozen yoghurt", 159),
-  createData("Ice cream sandwich", 237),
-];
-export default function CollapsibleTable() {
+
+export default function CollapsibleTable(props: BucketProps) {
+
+  const { buckets } = props;
+  useEffect(()=>{
+    console.log(props);
+  }, [props]);
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {buckets.map((bucket) => (
+            <Row key={bucket.name} row={bucket} />
           ))}
         </TableBody>
       </Table>

@@ -55,13 +55,6 @@ const SideBar = () => {
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 6 }}>
               <ListItemIcon>
-                <MapIcon />
-              </ListItemIcon>
-              <ListItemText primary="Route Map" />
-            </ListItemButton>
-
-            <ListItemButton sx={{ pl: 6 }}>
-              <ListItemIcon>
                 <ListAltIcon />
               </ListItemIcon>
               <ListItemText primary="ToDo" />

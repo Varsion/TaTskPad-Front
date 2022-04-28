@@ -1,13 +1,14 @@
 import React, {useEffect} from "react";
 import {
   Box, Toolbar, Breadcrumbs, Link, Grid, TextField, 
-  Button, Modal, Tab, Tabs, LinearProgress, 
+  Button, Modal, Tab, Tabs, LinearProgress, Stack
 } from "@mui/material";
 import RowTable from "../../components/RowTable/RowTable";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from '@mui/icons-material/Add';
 import TabPanel from "../../components/Items/TabPanel";
 import CreateBucket from "../../components/Bucket/CreateBucket";
+import CreateIssue from "../../components/Issue/CreateIssue";
 import { NotifyError, NotifySuccess } from "../../components/Notify";
 import { GET_BUCKETS } from "../../actions/bucket";
 import { useQuery } from "@apollo/client";
@@ -26,19 +27,24 @@ const style = {
 
 export default function Backlog() {
   const [tabValue, setTabValue] = React.useState(0);
-  const [modalOpen, setModalOpen] = React.useState(false);
+  const [bucketOpen, setBucketOpen] = React.useState(false);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
   const projectId = "26d1021e-3793-48cb-b943-595758139690"
-  const handleModalOpen = () => setModalOpen(true);
-  const handleModalClose = () => setModalOpen(false);
+
+  const handleBucketModalOpen = () => setBucketOpen(true);
+  const handleBucketModalClose = () => setBucketOpen(false);
 
   const { loading, error, data } = useQuery(GET_BUCKETS,{
     variables: {projectId}
   });
 
   const buckets = data?.project?.buckets;
+
+  const createIssue = () => {
+
+  }
 
   useEffect(() => {
     if (buckets) {
@@ -85,9 +91,14 @@ export default function Backlog() {
           />
         </Grid>
         <Grid item xs={4}>
-          <Button variant="contained" size="small" endIcon={<AddIcon />} onClick={handleModalOpen}>
-            Create
-          </Button>
+          <Stack direction="row-reverse" spacing={1}>
+            <Button variant="contained" size="small" endIcon={<AddIcon />} onClick={handleBucketModalOpen}>
+              Create Bucket
+            </Button>
+            <Button variant="contained" size="small" endIcon={<AddIcon />} onClick={createIssue}>
+              New Issue
+            </Button>
+          </Stack>
         </Grid>
       </Box>
       <Box sx={{ display: "flex", flexGrow: 1, mt: 3 }}>
@@ -102,8 +113,8 @@ export default function Backlog() {
         }
       </Box>
       <Modal
-        open={modalOpen}
-        onClose={handleModalClose}
+        open={bucketOpen}
+        onClose={handleBucketModalClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

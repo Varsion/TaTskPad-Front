@@ -18,7 +18,7 @@ export default function Router() {
         <Route path="/sign_in" element={<SignIn />} />
         <Route path="/sign_up" element={<SignUp />} />
 
-        <Route path="/:projectId" element={<Kanban />} />
+        <Route path="/" element={<Kanban />} />
         
         <Route path="/:projectId/backlog" element={<Backlog />} />
         <Route path="/organization" element={<Organization />} />
@@ -27,8 +27,6 @@ export default function Router() {
 
         <Route path="/issue/:issueKey" element={<Issue />} />
         <Route path="/issue/:projectId/create" element={<CreateIssue />} />
-
-        {/* Hello */}
       </Routes>
     </HashRouter>
   );

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {
   Box, Toolbar, Breadcrumbs, Link, Grid, TextField, 
-  Button, Modal, Tab, Tabs,
+  Button, Modal, Tab, Tabs, LinearProgress, 
 } from "@mui/material";
 import RowTable from "../../components/RowTable/RowTable";
 import SearchIcon from "@mui/icons-material/Search";
@@ -93,7 +93,9 @@ export default function Backlog() {
       <Box sx={{ display: "flex", flexGrow: 1, mt: 3 }}>
         {
           loading ? 
-            <Box>Loading...</Box> : 
+            <Box sx={{ width: '100%' }}>
+              <LinearProgress />
+            </Box> : 
               buckets && buckets?.length > 0 ? 
                 <RowTable buckets={buckets} /> :
                   <Box sx={{ textAlign: "center" }}>No buckets found</Box>

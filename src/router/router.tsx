@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "../pages/Auth/SignIn";
 import SignUp from "../pages/Auth/SignUp";
 import Dashboard from "../pages/Dashboard/Dashboard";
@@ -12,7 +12,7 @@ import CreateIssue from "../pages/Issue/CreateIssue";
 
 export default function Router() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
 
         <Route path="/sign_in" element={<SignIn />} />
@@ -25,9 +25,9 @@ export default function Router() {
         <Route path="/:organizationId/project" element={<Project />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/issue/:issueKey" element={<Issue />} />
+        <Route path="/issue" element={<Issue />} />
         <Route path="/issue/:projectId/create" element={<CreateIssue />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }

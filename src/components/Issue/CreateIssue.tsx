@@ -6,20 +6,23 @@ import { CREATE_ORGANIZATION } from '../../actions/organization'
 import { NotifyError, NotifySuccess } from '../Notify'
 import { useMutation } from '@apollo/client'
 
+interface PropsType {
+  projectId: string
+}
 
-const CreateIssue = () => {
+const CreateIssue = ({projectId}: PropsType) => {
   const [createOrganization, { data, error, loading }] = useMutation(CREATE_ORGANIZATION)
   const [organizationClass, setOrganizationClass] = useState('Personal')
 
   const organization = data?.createOrganization?.organization
   const errors = data?.createOrganization?.errors
 
-  interface CreateOrganizationInput {
+  interface CreateIssueInput {
     name: string
     email: string
   }
 
-  const defaultValues: CreateOrganizationInput = {
+  const defaultValues: CreateIssueInput = {
     name: '',
     email: ''
   }

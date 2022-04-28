@@ -1,14 +1,16 @@
 import React from "react";
-import {
-  Box, Toolbar, Breadcrumbs, Link, Grid, 
-  Typography, InputLabel, MenuItem, Divider,
-} from "@mui/material";
-import FormControl from "@mui/material/FormControl";
+import { Box, Breadcrumbs, Divider, FormControl, Grid, InputLabel, MenuItem, Toolbar, Typography, Link } from "@mui/material";
+import HeaderBar from "../../components/Items/HeaderBar";
+import SideBar from "../../components/Items/SideBar";
+import { useParams } from "react-router-dom";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import IssueStatusCard from "../../components/Issue/IssueStatusCard";
 import CreateComment from "../../components/Comment/CreateComment";
+import IssueStatusCard from "../../components/Issue/IssueStatusCard";
 
-export default function IssuePage() {
+const Issue = () => {
+
+  const { issueKey } = useParams<string>();
+
   const [age, setAge] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -16,7 +18,10 @@ export default function IssuePage() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, p: 3 }}>
+    <Box sx={{ flexGrow: 1, display: "flex" }}>
+      <HeaderBar />
+      <SideBar />
+      <Box sx={{ flexGrow: 1, p: 3 }}>
       <Toolbar />
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/#/">
@@ -86,5 +91,8 @@ export default function IssuePage() {
         </Grid>
       </Box>
     </Box>
-  );
+    </Box>
+  )
 }
+
+export default Issue;

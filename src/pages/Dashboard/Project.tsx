@@ -33,18 +33,18 @@ const style = {
 };
 
 const Project = () => {
-  const [organizationId, setOrganizationId] = useState("");
+  const [id, setId] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  const { id } = useParams<string>();
+  const { organizationId } = useParams<string>();
 
   const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
 
   useEffect(() => {
-    if (id) {
-      setOrganizationId(id);
+    if (organizationId) {
+      setId(organizationId);
     }
-  }, [id]);
+  }, [organizationId]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -93,7 +93,7 @@ const Project = () => {
           </Tabs>
           <Box>
             <TabPanel value={0} index={0}>
-              <CreateProject organizationId={organizationId} />
+              <CreateProject organizationId={id} />
             </TabPanel>
           </Box>
         </Box>

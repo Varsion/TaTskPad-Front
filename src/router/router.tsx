@@ -25,7 +25,7 @@ export default function Router() {
         <Route path="/:organizationId/project" element={<Project />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/issue" element={<Issue />} />
+        <Route path="/issue/:keyNumber" element={<Issue />} />
         <Route path="/issue/:projectId/create" element={<CreateIssue />} />
       </Routes>
     </BrowserRouter>

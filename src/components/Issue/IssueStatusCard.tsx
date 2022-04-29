@@ -52,17 +52,6 @@ const IssueStatusCard = () => {
           <Grid item>
             <TextField id="standard-basic" label="Estimate" variant="standard" value={'1d'} fullWidth/>
           </Grid>
-          <Grid item style={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}>
-            <LoadingButton 
-              loading={false}
-              variant="contained" 
-              type='submit' >
-                Update
-            </LoadingButton>
-          </Grid>
         </Grid>
       </CardContent>
     </Card>

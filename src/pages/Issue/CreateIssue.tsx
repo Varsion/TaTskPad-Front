@@ -48,14 +48,23 @@ const CreateIssue = () => {
     setType(event.target.value as string);
   };
   const [values, SetValues] = useState(defaultValues)
-
-  const handleSubmit = () => {
-  }
-
+  const errors = data?.createIssue.errors;
+  const issue = data?.createIssue.issue;
   
   useEffect(() => {
-    
-  }, [data, error])
+    if(issue) {
+      NotifySuccess("Issue created successfully")
+      console.log(issue)
+    }
+    if(errors) {
+      NotifyError(errors[0].attribute + ' ' + errors[0].message)
+      console.log(errors)
+    }
+    if(error) {
+      NotifyError(error.message)
+      console.log(error)
+    }
+  }, [issue, error, errors])
 
   const handleInputChange = (e: any) => {
     const { id, value } = e.target;
@@ -63,8 +72,24 @@ const CreateIssue = () => {
       ...values,
       [id]: value,
     });
-    console.log(values)
   };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    const { title, genre, estimate } = values;
+    createIssue({
+      variables: {
+        input: {
+          projectId,
+          description,
+          priority,
+          title,
+          genre,
+          estimate
+        }
+      }
+    })
+  }
 
   return (
     <Box sx={{ flexGrow: 1, display: "flex" }}>
@@ -130,7 +155,7 @@ const CreateIssue = () => {
                 />
               </Box>
               <LoadingButton 
-                loading={false}
+                loading={loading}
                 variant="contained"
                 type='submit' 
                 sx={{width: 100}}

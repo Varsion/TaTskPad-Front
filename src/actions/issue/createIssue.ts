@@ -1,18 +1,29 @@
 import { gql } from '@apollo/client'
 
 export const CREATE_ISSUE = gql`
-  mutation CreateOrganization($input: CreateOrganizationInput!) {
-    createOrganization(input: $input) {
-      organization {
+mutation CreateIssue($input: CreateIssueInput!) {
+  createIssue(input: $input) {
+    issue {
+      id
+      title
+      description
+      priority
+      genre
+      estimate
+      project {
         id
-        name
-        email
-        logoUrl
-        organizationClass
       }
-      errors {
-        attribute
-        message
+      author {
+        id
+      }
+      customizeFields {
+        name
+        value
       }
     }
-  }`;
+    errors {
+      attribute
+      message
+    }
+  }
+}`;

@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { 
   Box, Divider, FormControl, Grid, Skeleton,
   InputLabel, MenuItem, Toolbar, Typography,
-  Stack,
+  Stack, Button,
 } from "@mui/material";
 import CreateComment from "../Comment/CreateComment";
 import IssueStatusCard from "./IssueStatusCard";
@@ -73,22 +73,33 @@ const IssueContent = (props: IssueContentProps) => {
       <Grid item xs={4}>
         <Grid container direction="column" alignItems="stretch">
           <Grid item>
-            <Box sx={{ maxWidth: 300 }}>
-              <FormControl fullWidth>
-                <InputLabel id="issue-status">Status</InputLabel>
-                <Select
-                  labelId="issue-status"
-                  id="demo-simple-select"
-                  value={age}
-                  label="Status"
-                  onChange={handleChange}
-                >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <Box sx={{ maxWidth: 300 }}>
+                  <FormControl fullWidth>
+                    <InputLabel id="issue-status">Status</InputLabel>
+                    <Select
+                      labelId="issue-status"
+                      id="demo-simple-select"
+                      value={age}
+                      label="Status"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+              </Grid>
+              <Grid item xs={6} style={{
+                display: 'flex',
+                justifyContent: 'center',
+              }}>
+                <Button variant="contained">Update</Button>
+              </Grid>
+            </Grid>
+
             <Toolbar />
             <IssueStatusCard />
           </Grid>

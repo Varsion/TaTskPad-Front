@@ -33,6 +33,8 @@ export default function Router() {
         <Route path="/permissions/:roleId" element={<Permissions />} />
 
         <Route path="/issue/:keyNumber" element={<Issue />} />
+        {/* Pending */}
+        <Route path="/issue/:keyNumber/update" element={<CreateIssue />} />
         <Route path="/issue/:projectId/create" element={<CreateIssue />} />
       </Routes>
     </BrowserRouter>

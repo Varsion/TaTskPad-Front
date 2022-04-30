@@ -9,6 +9,9 @@ import Kanban from "../pages/Kanban/Kanban";
 import Backlog from "../pages/Kanban/Backlog";
 import Issue from "../pages/Issue/Issue";
 import CreateIssue from "../pages/Issue/CreateIssue";
+import Members from "../pages/Role/Member";
+import Roles from "../pages/Role/Role";
+import Permissions from "../pages/Role/Permission";
 
 export default function Router() {
   return (
@@ -24,6 +27,10 @@ export default function Router() {
         <Route path="/organization" element={<Organization />} />
         <Route path="/:organizationId/project" element={<Project />} />
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/members" element={<Members />} />
+        <Route path="/roles" element={<Roles />} />
+        <Route path="/permissions/:roleId" element={<Permissions />} />
 
         <Route path="/issue/:keyNumber" element={<Issue />} />
         <Route path="/issue/:projectId/create" element={<CreateIssue />} />

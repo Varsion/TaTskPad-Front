@@ -5,11 +5,13 @@ import {
   TableCell, TableContainer, TableHead, TableRow, Paper,
   Checkbox, FormControlLabel, Button, Stack
 } from '@mui/material';
+import HeaderBar from "../../components/Items/HeaderBar";
 
-export default function Permission() {
+const Permissions = () =>{
   return (
     <Container sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'column', mt:10 }}>
       <Toolbar />
+      <HeaderBar />
       <Typography variant="h5">
         Admin
       </Typography>
@@ -107,3 +109,5 @@ export default function Permission() {
     </Container>
   );
 }
+
+export default Permissions;

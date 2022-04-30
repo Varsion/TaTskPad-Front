@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Box, FormGroup, TextField, Toolbar, Stack, Breadcrumbs, Link, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Box, FormGroup, TextField, Toolbar, Stack, Breadcrumbs, Link, FormControl, InputLabel, MenuItem, Select, Avatar, Chip } from "@mui/material";
 import HeaderBar from "../../components/Items/HeaderBar";
 import SideBar from "../../components/Items/SideBar";
 import { useParams } from "react-router-dom";
@@ -30,6 +30,7 @@ const CreateIssue = () => {
 
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('p2');
+  const [assignee, setAssignee] = useState('');
   const [type, setType] = useState('story');
 
   const defaultValues: IssueProps = {
@@ -42,6 +43,10 @@ const CreateIssue = () => {
 
   const handlePriority = (event: SelectChangeEvent) => {
     setPriority(event.target.value as string);
+  };
+
+  const handleAssignee = (event: SelectChangeEvent) => {
+    setAssignee(event.target.value as string);
   };
 
   const handleType = (event: SelectChangeEvent) => {
@@ -141,6 +146,22 @@ const CreateIssue = () => {
                   <MenuItem value={'story'}>Story</MenuItem>
                   <MenuItem value={'bug'}>Bug</MenuItem>
                   <MenuItem value={'task'}>Task</MenuItem>
+                </Select>
+              </FormControl>
+
+              <FormControl sx={{width: 300}}>
+                <InputLabel id="demo-simple-select-label">Assignee</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="assignee"
+                  value={assignee}
+                  onChange={handleAssignee}
+                  label="Assignee"
+                >
+                  <MenuItem value={'0001'}><Chip avatar={<Avatar />} label={'hello-1'} /></MenuItem>
+                  <MenuItem value={'0002'}><Chip avatar={<Avatar />} label={'hello-2'} /></MenuItem>
+                  <MenuItem value={'0003'}><Chip avatar={<Avatar />} label={'hello-3'} /></MenuItem>
+                  <MenuItem value={'0004'}><Chip avatar={<Avatar />} label={'hello-4'} /></MenuItem>
                 </Select>
               </FormControl>
 

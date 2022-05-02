@@ -7,10 +7,11 @@ import { LoadingButton } from "@mui/lab";
 import { SelectChangeEvent } from "@mui/material/Select";
 import { NotifyError, NotifySuccess } from "../../components/Notify";
 import { CREATE_ISSUE } from "../../actions/issue";
+import { GET_MEMBERS } from "../../actions/organization";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../../styles/editor.css';
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 
 
@@ -25,13 +26,11 @@ interface IssueProps {
 const CreateIssue = () => {
 
   const { projectId } = useParams<string>();
+  const organizationId = "45833008-1baf-40e2-96d1-bb8d288691e0"
 
   const [createIssue, { data, error, loading }] = useMutation(CREATE_ISSUE)
-
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('p2');
-  const [assignee, setAssignee] = useState('');
-  const [type, setType] = useState('story');
+  const { data: membersData, loading: membersLoading, error: membersError } = useQuery(GET_MEMBERS, {
+    variables: { organizationId } })
 
   const defaultValues: IssueProps = {
     title: "",
@@ -40,6 +39,17 @@ const CreateIssue = () => {
     genre: "",
     estimate: ""
   }
+
+  const [values, SetValues] = useState(defaultValues)
+  const errors = data?.createIssue.errors;
+  const issue = data?.createIssue.issue;
+  
+  const members = membersData?.organization.members;
+
+  const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState('p2');
+  const [assignee, setAssignee] = useState('');
+  const [type, setType] = useState('story');
 
   const handlePriority = (event: SelectChangeEvent) => {
     setPriority(event.target.value as string);
@@ -52,10 +62,7 @@ const CreateIssue = () => {
   const handleType = (event: SelectChangeEvent) => {
     setType(event.target.value as string);
   };
-  const [values, SetValues] = useState(defaultValues)
-  const errors = data?.createIssue.errors;
-  const issue = data?.createIssue.issue;
-  
+
   useEffect(() => {
     if(issue) {
       NotifySuccess("Issue created successfully")
@@ -90,6 +97,7 @@ const CreateIssue = () => {
           priority,
           title,
           genre,
+          assigneeId: assignee,
           estimate
         }
       }
@@ -158,10 +166,13 @@ const CreateIssue = () => {
                   onChange={handleAssignee}
                   label="Assignee"
                 >
-                  <MenuItem value={'0001'}><Chip avatar={<Avatar />} label={'hello-1'} /></MenuItem>
-                  <MenuItem value={'0002'}><Chip avatar={<Avatar />} label={'hello-2'} /></MenuItem>
-                  <MenuItem value={'0003'}><Chip avatar={<Avatar />} label={'hello-3'} /></MenuItem>
-                  <MenuItem value={'0004'}><Chip avatar={<Avatar />} label={'hello-4'} /></MenuItem>
+                  {
+                    members?.map((member: any, index: number) => {
+                      return (
+                        <MenuItem key={index} value={member.id}><Chip avatar={<Avatar src={member.avatar} />} label={member.name} /></MenuItem>
+                      )
+                    })
+                  }
                 </Select>
               </FormControl>
 

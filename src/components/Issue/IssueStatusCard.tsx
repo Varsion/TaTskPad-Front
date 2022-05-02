@@ -1,11 +1,22 @@
-import React from "react"
-import { Card, CardContent, Grid, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material"
-
+import React from "react";
+import {
+  Card,
+  CardContent,
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  TextField,
+  Chip,
+  Box,
+  Avatar,
+} from "@mui/material";
+import "./Issue.css";
 import { SelectChangeEvent } from "@mui/material/Select";
 
 const IssueStatusCard = () => {
-
-  const [priority, setPriority] = React.useState('p1');
+  const [priority, setPriority] = React.useState("p1");
   const handlePriorityChange = (event: SelectChangeEvent) => {
     setPriority(event.target.value as string);
   };
@@ -13,48 +24,34 @@ const IssueStatusCard = () => {
   return (
     <Card sx={{ minWidth: 300 }}>
       <CardContent>
-        <Grid container direction="column" alignItems="stretch" spacing={2}>
-          <Grid item>
-            <FormControl variant="standard" fullWidth>
-              <InputLabel id="demo-simple-select-label">Priority</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={priority}
-                label="Age"
-                onChange={handlePriorityChange}
-              >
-                <MenuItem value={'p0'}>P0</MenuItem>
-                <MenuItem value={'p1'}>P1</MenuItem>
-                <MenuItem value={'p2'}>P2</MenuItem>
-                <MenuItem value={'p3'}>P3</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-
-          <Grid item>
-            <FormControl variant="standard" fullWidth>
-              <InputLabel id="demo-simple-select-label">Type</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={'story'}
-                label="Type"
-                onChange={handlePriorityChange}
-              >
-                <MenuItem value={'story'}>Story</MenuItem>
-                <MenuItem value={'bug'}>Bug</MenuItem>
-                <MenuItem value={'task'}>Task</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item>
-            <TextField id="standard-basic" label="Estimate" variant="standard" value={'1d'} fullWidth/>
-          </Grid>
-        </Grid>
+        <Box>
+          <Box className="message">详细信息</Box>
+          <Box className="TopContainer">
+            <Box className="container">
+              <Box>经办人</Box>
+              <Box className="messageOne">
+                <Chip avatar={<Avatar />} label={"hello-1"} />
+              </Box>
+            </Box>
+            <Box className="container">
+              <Box>报告人</Box>
+              <Box className="messageOne">
+                <Chip avatar={<Avatar />} label={"hello-1"} />
+              </Box>
+            </Box>
+            <Box className="container">
+              <Box>标签</Box>
+              <Box className="right-box">无</Box>
+            </Box>
+            <Box className="container">
+              <Box>优先级</Box>
+              <Box className="right-boxTwo">xxx</Box>
+            </Box>
+          </Box>
+        </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default IssueStatusCard
+export default IssueStatusCard;

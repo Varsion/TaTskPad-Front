@@ -1,50 +1,38 @@
 import React from "react";
 import {
-  Card,
-  CardContent,
-  Grid,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextField,
-  Chip,
-  Box,
-  Avatar,
+  Card, CardContent, Chip, Box, Avatar, Stack
 } from "@mui/material";
 import "./Issue.css";
-import { SelectChangeEvent } from "@mui/material/Select";
 
 const IssueStatusCard = () => {
-  const [priority, setPriority] = React.useState("p1");
-  const handlePriorityChange = (event: SelectChangeEvent) => {
-    setPriority(event.target.value as string);
-  };
 
   return (
     <Card sx={{ minWidth: 300 }}>
       <CardContent>
         <Box>
-          <Box className="message">详细信息</Box>
+          <Box className="message">Details</Box>
           <Box className="TopContainer">
             <Box className="container">
-              <Box>经办人</Box>
+              <Box sx={{width:50}}>Assignee</Box>
               <Box className="messageOne">
                 <Chip avatar={<Avatar />} label={"hello-1"} />
               </Box>
             </Box>
             <Box className="container">
-              <Box>报告人</Box>
+              <Box sx={{width:50}}>Author</Box>
               <Box className="messageOne">
                 <Chip avatar={<Avatar />} label={"hello-1"} />
               </Box>
             </Box>
             <Box className="container">
-              <Box>标签</Box>
-              <Box className="right-box">无</Box>
+              <Box sx={{width:50}}>Labels</Box>
+              <Stack direction="row" spacing={2} className="messageOne">
+                <Chip color="primary" label="prod" size="small" />
+                <Chip label="need" size="small" />
+              </Stack>
             </Box>
             <Box className="container">
-              <Box>优先级</Box>
+              <Box sx={{width:50}}>Priority</Box>
               <Box className="right-boxTwo">xxx</Box>
             </Box>
           </Box>

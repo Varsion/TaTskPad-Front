@@ -9,6 +9,7 @@ import IssueStatusCard from "./IssueStatusCard";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useQuery } from "@apollo/client";
 import { GET_ISSUE } from "../../actions/issue";
+import { GET_WORKFLOW_STEPS } from "../../actions/project";
 
 interface IssueContentProps {
   keyNumber: any;
@@ -17,22 +18,29 @@ interface IssueContentProps {
 const IssueContent = (props: IssueContentProps) => {
 
   const { keyNumber } = props;
+  const projectId = "26d1021e-3793-48cb-b943-595758139690";
 
   const { data, loading, error } = useQuery(GET_ISSUE, {
     variables: { keyNumber }
   })
 
+  const {data: workflowData, loading: workflowLoading, error: workflowError} = useQuery(GET_WORKFLOW_STEPS, {
+    variables: { projectId }
+  })
+
+  const workflowSteps = workflowData?.project?.workflowSteps;
+
   const issue = data?.issue
 
-  const [age, setAge] = React.useState("");
+  const [status, setStatus] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setStatus(event.target.value as string);
   };
 
   useEffect(()=>{
     if(issue) {
-      console.log(issue)
+      setStatus(issue.status)
     }
   }, [issue])
 
@@ -45,7 +53,7 @@ const IssueContent = (props: IssueContentProps) => {
         <Box sx={{minHeight: 600}}>
           <Typography variant="h4" mb={1}>
             {
-              loading ? <Skeleton /> : issue.title
+              loading ? <Skeleton /> : issue?.title
             }
           </Typography>
           <br />
@@ -61,7 +69,7 @@ const IssueContent = (props: IssueContentProps) => {
                   <Skeleton variant="text" />
                   <Skeleton variant="text" />
                 </Stack> :
-                  <div dangerouslySetInnerHTML={{ __html: issue.description }} />
+                  <div dangerouslySetInnerHTML={{ __html: issue?.description }} />
             }
           </Typography>
         </Box>
@@ -81,13 +89,18 @@ const IssueContent = (props: IssueContentProps) => {
                     <Select
                       labelId="issue-status"
                       id="demo-simple-select"
-                      value={age}
+                      value={status}
                       label="Status"
                       onChange={handleChange}
                     >
-                      <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem>
+                      <MenuItem value="backlog">Backlog</MenuItem>
+                      {
+                        workflowSteps?.map((step: any, index: number) => {
+                          return (
+                            <MenuItem key={index} value={step.name}>{step.name}</MenuItem>
+                          )
+                        })
+                      }
                     </Select>
                   </FormControl>
                 </Box>

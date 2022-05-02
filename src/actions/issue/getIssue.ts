@@ -7,20 +7,6 @@ export const GET_ISSUE = gql`
       title
       description
       genre
-      priority
-      author {
-        id
-        name
-        avatar
-      }
-      assignee {
-        id
-        name
-        avatar
-      }
-      customizeFields {
-        name
-        value
-      }
+      status
     }
   }`;

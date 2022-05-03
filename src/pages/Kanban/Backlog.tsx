@@ -33,7 +33,7 @@ export default function Backlog() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
-  const projectId = "26d1021e-3793-48cb-b943-595758139690"
+  const projectId = localStorage.getItem("projectId");
 
   const handleBucketModalOpen = () => setBucketOpen(true);
   const handleBucketModalClose = () => setBucketOpen(false);

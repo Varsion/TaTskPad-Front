@@ -2,15 +2,17 @@ import React, {useEffect} from 'react';
 import {
   Paper, Table, TableBody, TableCell, 
   TableContainer, TableHead, TableRow,
-  Chip, Avatar
+  Chip, Avatar,
 } from '@mui/material';
 
 import { GET_PROJECT } from '../../actions/project'
 import { useQuery } from '@apollo/client'
 import { NotifyError, NotifySuccess } from '../Notify'
+import { setProjectId } from '../Session'
+import { useNavigate } from 'react-router-dom'
 
 interface ProjectTableProps {
-  organizationId?: string
+  organizationId: any
 }
 
 interface ProjectType {
@@ -23,6 +25,8 @@ interface ProjectType {
 const ProjectTable = (props: ProjectTableProps) => {
   const { organizationId } = props;
 
+  const navigate = useNavigate();
+
   const { loading, error, data } = useQuery(GET_PROJECT, {
     variables: {
       organizationId
@@ -31,6 +35,12 @@ const ProjectTable = (props: ProjectTableProps) => {
 
   const owner = data?.organization?.owner
   const projects = data?.organization?.projects
+
+  const enter = (projectId: string) => {
+    console.log(projectId);
+    setProjectId(projectId);
+    navigate("/");
+  }
 
   useEffect(()=>{
     if(data){
@@ -58,16 +68,16 @@ const ProjectTable = (props: ProjectTableProps) => {
               <TableRow><TableCell colSpan={4} align='center'>Loading...</TableCell></TableRow> :
               projects.length > 0 ?
                 projects.map((project: ProjectType, index: number) => (
-                  <TableRow key={project.name}>
-                    <TableCell> {index+1} </TableCell>
-                    <TableCell align='center'>
-                      <Chip avatar={<Avatar />} label={project.name} />
-                    </TableCell>
-                    <TableCell align='center'> {project.keyWord} </TableCell>
-                    <TableCell align='center'>
-                      <Chip avatar={<Avatar />} label={owner.name} />
-                    </TableCell>
-                  </TableRow>
+                    <TableRow key={project.id} onClick={(event) => enter(project.id)}>
+                      <TableCell> {index+1} </TableCell>
+                      <TableCell align='center'>
+                        <Chip avatar={<Avatar />} label={project.name} />
+                      </TableCell>
+                      <TableCell align='center'> {project.keyWord} </TableCell>
+                      <TableCell align='center'>
+                        <Chip avatar={<Avatar />} label={owner.name} />
+                      </TableCell>
+                    </TableRow>
                 )) :
                 <TableRow><TableCell colSpan={4} align='center'>Empty</TableCell></TableRow>
           }

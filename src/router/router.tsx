@@ -23,9 +23,9 @@ export default function Router() {
 
         <Route path="/" element={<Kanban />} />
         
-        <Route path="/:projectId/backlog" element={<Backlog />} />
-        <Route path="/organization" element={<Organization />} />
-        <Route path="/:organizationId/project" element={<Project />} />
+        <Route path="/backlog" element={<Backlog />} />
+        <Route path="/organization" element={<Organization />} />=
+        <Route path="/project" element={<Project />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/members" element={<Members />} />
@@ -35,7 +35,7 @@ export default function Router() {
         <Route path="/issue/:keyNumber" element={<Issue />} />
         {/* Pending */}
         <Route path="/issue/:keyNumber/update" element={<CreateIssue />} />
-        <Route path="/issue/:projectId/create" element={<CreateIssue />} />
+        <Route path="/issue/create" element={<CreateIssue />} />
       </Routes>
     </BrowserRouter>
   );

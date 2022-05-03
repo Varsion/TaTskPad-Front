@@ -8,7 +8,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_BUCKET } from '../../actions/bucket'
 
 interface PropsType {
-  projectId: string
+  projectId: any
 }
 
 const CreateBucket = ({projectId}: PropsType) => {

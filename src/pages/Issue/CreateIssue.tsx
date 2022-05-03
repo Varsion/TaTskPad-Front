@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import { Box, FormGroup, TextField, Toolbar, Stack, Breadcrumbs, Link, FormControl, InputLabel, MenuItem, Select, Avatar, Chip } from "@mui/material";
 import HeaderBar from "../../components/Items/HeaderBar";
 import SideBar from "../../components/Items/SideBar";
-import { useParams } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
 import { SelectChangeEvent } from "@mui/material/Select";
 import { NotifyError, NotifySuccess } from "../../components/Notify";
@@ -25,8 +24,8 @@ interface IssueProps {
 
 const CreateIssue = () => {
 
-  const { projectId } = useParams<string>();
-  const organizationId = "45833008-1baf-40e2-96d1-bb8d288691e0"
+  const projectId = localStorage.getItem("projectId");
+  const organizationId = localStorage.getItem("organizationId");
 
   const [createIssue, { data, error, loading }] = useMutation(CREATE_ISSUE)
   const { data: membersData, loading: membersLoading, error: membersError } = useQuery(GET_MEMBERS, {

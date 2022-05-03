@@ -9,7 +9,6 @@ import AddIcon from "@mui/icons-material/Add";
 
 import ProjectTable from "../../components/Tables/ProjectTables";
 import CreateProject from "../../components/ProjectFroms/CreateProject";
-import { useParams } from "react-router-dom";
 import TabPanel from "../../components/Items/TabPanel";
 
 const style = {
@@ -27,8 +26,8 @@ const style = {
 const Project = () => {
   const [id, setId] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  const { organizationId } = useParams<string>();
 
+  const organizationId = localStorage.getItem("organizationId");
   const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
 

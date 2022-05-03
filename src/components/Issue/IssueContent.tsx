@@ -36,6 +36,7 @@ const IssueContent = (props: IssueContentProps) => {
   const workflowSteps = workflowData?.project?.workflowSteps;
 
   const issue = data?.issue
+  const issueId = data?.issue?.id
 
   const [status, setStatus] = React.useState("");
 
@@ -94,7 +95,7 @@ const IssueContent = (props: IssueContentProps) => {
         </Box>
         <Divider />
         <Box>
-          <CreateComment />
+          <CreateComment issueId={issueId} />
         </Box>
       </Grid>
       <Grid item xs={4}>

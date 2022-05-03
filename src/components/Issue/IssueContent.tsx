@@ -114,7 +114,7 @@ const IssueContent = (props: IssueContentProps) => {
             </Grid>
 
             <Toolbar />
-            <IssueStatusCard />
+            <IssueStatusCard keyNumber={keyNumber} />
           </Grid>
         </Grid>
       </Grid>

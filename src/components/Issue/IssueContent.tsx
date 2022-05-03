@@ -7,8 +7,9 @@ import {
 import CreateComment from "../Comment/CreateComment";
 import IssueStatusCard from "./IssueStatusCard";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useQuery } from "@apollo/client";
-import { GET_ISSUE } from "../../actions/issue";
+import { NotifyError, NotifySuccess } from '../Notify'
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_ISSUE, UPDATE_STATUS } from "../../actions/issue";
 import { GET_WORKFLOW_STEPS } from "../../actions/project";
 
 interface IssueContentProps {
@@ -28,6 +29,11 @@ const IssueContent = (props: IssueContentProps) => {
     variables: { projectId }
   })
 
+  const [updateStatus, {data: updateIssueStatusData, loading: updateIssueStatusLoading, error: updateIssueStatusError}] = useMutation(UPDATE_STATUS);
+
+  const newStatus = updateIssueStatusData?.updateIssue?.issue?.status
+  const updateError = updateIssueStatusData?.updateIssue?.issue?.error
+
   const workflowSteps = workflowData?.project?.workflowSteps;
 
   const issue = data?.issue
@@ -35,14 +41,28 @@ const IssueContent = (props: IssueContentProps) => {
   const [status, setStatus] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setStatus(event.target.value as string);
+    updateStatus({
+      variables: {
+        input: {
+          keyNumber,
+          status: event.target.value as string
+        }
+      }
+    });
   };
 
   useEffect(()=>{
     if(issue) {
       setStatus(issue.status)
     }
-  }, [issue])
+    if(newStatus) {
+      setStatus(newStatus)
+      NotifySuccess(`Issue status updated to ${newStatus}`)
+    }
+    if(updateError) {
+      NotifyError(updateError[0].attribute+ " " + updateError[0].message)
+    }
+  }, [issue, newStatus, updateError])
 
 
   return (

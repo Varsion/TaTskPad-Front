@@ -7,7 +7,7 @@ import {
 
 import { GET_PROJECT } from '../../actions/project'
 import { useQuery } from '@apollo/client'
-import { NotifyError, NotifySuccess } from '../Notify'
+import { NotifyError } from '../Notify'
 import { setProjectId } from '../Session'
 import { useNavigate } from 'react-router-dom'
 
@@ -43,13 +43,10 @@ const ProjectTable = (props: ProjectTableProps) => {
   }
 
   useEffect(()=>{
-    if(data){
-      NotifySuccess('Create Success');
-    }
     if(error){
       NotifyError(error.message)
     }
-  }, [data, error])
+  }, [error])
   
 
   return (

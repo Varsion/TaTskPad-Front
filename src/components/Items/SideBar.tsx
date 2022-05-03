@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Avatar, Box, Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from "@mui/material";
 
-import MapIcon from "@mui/icons-material/Map";
+import { useNavigate } from "react-router-dom"
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import ListAltIcon from "@mui/icons-material/ListAlt";
@@ -17,6 +17,8 @@ const SideBar = () => {
 
   const [plan, setPlan] = useState(true);
   const [dev, setDev] = useState(true);
+
+  const navigate = useNavigate();
 
   const handlePlanClick = () => {
     setPlan(!plan);
@@ -57,14 +59,14 @@ const SideBar = () => {
               <ListItemIcon>
                 <ListAltIcon />
               </ListItemIcon>
-              <ListItemText primary="ToDo" />
+              <ListItemText primary="ToDo" onClick={ () => {navigate("/backlog")} } />
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 6 }}>
               <ListItemIcon>
                 <ViewWeekIcon />
               </ListItemIcon>
-              <ListItemText primary="Sprint" />
+              <ListItemText primary="Sprint" onClick={ () => {navigate("/")} } />
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 6 }}>

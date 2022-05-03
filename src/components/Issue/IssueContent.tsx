@@ -17,7 +17,6 @@ interface IssueContentProps {
 }
 
 const IssueContent = (props: IssueContentProps) => {
-
   const { keyNumber } = props;
   const projectId = "26d1021e-3793-48cb-b943-595758139690";
 

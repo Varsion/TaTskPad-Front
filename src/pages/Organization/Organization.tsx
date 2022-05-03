@@ -2,18 +2,8 @@ import React, { useEffect } from "react";
 import HeaderBar from "../../components/Items/HeaderBar";
 import { useQuery } from "@apollo/client";
 import {
-  Box,
-  Grid,
-  Toolbar,
-  Breadcrumbs,
-  Container,
-  Pagination,
-  Button,
-  Typography,
-  Stack,
-  Modal,
-  Tab,
-  Tabs,
+  Box, Grid, Toolbar, Breadcrumbs, Container, Pagination,
+  Button, Typography, Stack, Modal, Tab, Tabs,
 } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";

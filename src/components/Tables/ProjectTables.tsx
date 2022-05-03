@@ -44,6 +44,7 @@ const ProjectTable = (props: ProjectTableProps) => {
 
   useEffect(()=>{
     if(data){
+      NotifySuccess('Create Success');
     }
     if(error){
       NotifyError(error.message)

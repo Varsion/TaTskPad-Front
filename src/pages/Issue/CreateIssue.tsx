@@ -28,7 +28,7 @@ const CreateIssue = () => {
   const organizationId = localStorage.getItem("organizationId");
 
   const [createIssue, { data, error, loading }] = useMutation(CREATE_ISSUE)
-  const { data: membersData, loading: membersLoading, error: membersError } = useQuery(GET_MEMBERS, {
+  const { data: membersData } = useQuery(GET_MEMBERS, {
     variables: { organizationId } })
 
   const defaultValues: IssueProps = {

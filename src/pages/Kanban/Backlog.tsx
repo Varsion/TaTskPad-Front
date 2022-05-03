@@ -8,7 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from '@mui/icons-material/Add';
 import TabPanel from "../../components/Items/TabPanel";
 import CreateBucket from "../../components/Bucket/CreateBucket";
-import { NotifyError, NotifySuccess } from "../../components/Notify";
+import { NotifyError } from "../../components/Notify";
 import { GET_BUCKETS } from "../../actions/bucket";
 import { useQuery } from "@apollo/client";
 

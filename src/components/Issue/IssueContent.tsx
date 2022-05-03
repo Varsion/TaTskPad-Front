@@ -20,15 +20,15 @@ const IssueContent = (props: IssueContentProps) => {
   const { keyNumber } = props;
   const projectId = "26d1021e-3793-48cb-b943-595758139690";
 
-  const { data, loading, error } = useQuery(GET_ISSUE, {
+  const { data, loading } = useQuery(GET_ISSUE, {
     variables: { keyNumber }
   })
 
-  const {data: workflowData, loading: workflowLoading, error: workflowError} = useQuery(GET_WORKFLOW_STEPS, {
+  const {data: workflowData } = useQuery(GET_WORKFLOW_STEPS, {
     variables: { projectId }
   })
 
-  const [updateStatus, {data: updateIssueStatusData, loading: updateIssueStatusLoading, error: updateIssueStatusError}] = useMutation(UPDATE_STATUS);
+  const [updateStatus, { data: updateIssueStatusData }] = useMutation(UPDATE_STATUS);
 
   const newStatus = updateIssueStatusData?.updateIssue?.issue?.status
   const updateError = updateIssueStatusData?.updateIssue?.issue?.error

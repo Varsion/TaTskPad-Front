@@ -14,7 +14,7 @@ interface OrganizationProps {
 }
 
 const OrganizationCard = (props: OrganizationProps) => {
-  const { id, name, logoUrl, ...other } = props;
+  const { id, name, logoUrl } = props;
 
   const navigate = useNavigate();
 

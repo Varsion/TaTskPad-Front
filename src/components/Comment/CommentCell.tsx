@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   Card, CardHeader, Avatar, IconButton, CardContent,
   Typography
 } from '@mui/material';
-import { red } from '@mui/material/colors';
 import ClearIcon from '@mui/icons-material/Clear';
+import { DELETE_COMMENT } from '../../actions/comment';
+import { useMutation } from '@apollo/client';
+import { NotifyError, NotifySuccess } from '../Notify'
 
 interface CommentCellProps {
   id: string;
@@ -21,9 +23,31 @@ const CommentCell = (props:CommentCellProps) => {
 
   const { id, content, account, createdAt } = props;
 
-  const deleteComment = () => {
+  const [deleteComment, {data, error}] = useMutation(DELETE_COMMENT)
+  const comment = data?.deleteComment?.comment;
+  const errors = data?.deleteComment?.errors
+
+  const handleDelete = () => {
     console.log("delete comment")
+    deleteComment({
+      variables: {
+        input: {id}
+      }
+    })
   }
+
+  useEffect(() => {
+    if(comment) {
+      NotifySuccess("Comment Deleted Success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000)
+    }
+    if(errors) {
+      NotifyError("Comment Deleted Failed");
+    }
+  },[comment, errors])
+
 
   return (
     <Card>
@@ -33,7 +57,7 @@ const CommentCell = (props:CommentCellProps) => {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings" onClick={deleteComment}>
+          <IconButton aria-label="settings" onClick={handleDelete}>
             <ClearIcon />
           </IconButton>
         }

@@ -46,7 +46,10 @@ const CommentCell = (props:CommentCellProps) => {
     if(errors) {
       NotifyError("Comment Deleted Failed");
     }
-  },[comment, errors])
+    if(error) {
+      NotifyError(error.message);
+    }
+  },[comment, errors, error])
 
 
   return (

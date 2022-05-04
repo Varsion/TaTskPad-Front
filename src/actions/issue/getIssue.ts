@@ -8,5 +8,15 @@ export const GET_ISSUE = gql`
       description
       genre
       status
+      comments {
+        id
+        content
+        createdAt
+        account {
+          id
+          name
+          avatar
+        }
+      }
     }
   }`;

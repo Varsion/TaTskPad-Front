@@ -11,6 +11,7 @@ import { NotifyError, NotifySuccess } from '../Notify'
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ISSUE, UPDATE_STATUS } from "../../actions/issue";
 import { GET_WORKFLOW_STEPS } from "../../actions/project";
+import CommentContainer from "../Comment/CommentContainer";
 
 interface IssueContentProps {
   keyNumber: any;
@@ -36,6 +37,7 @@ const IssueContent = (props: IssueContentProps) => {
   const workflowSteps = workflowData?.project?.workflowSteps;
 
   const issue = data?.issue
+  const comments = data?.issue?.comments
   const issueId = data?.issue?.id
 
   const [status, setStatus] = React.useState("");
@@ -62,7 +64,7 @@ const IssueContent = (props: IssueContentProps) => {
     if(updateError) {
       NotifyError(updateError[0].attribute+ " " + updateError[0].message)
     }
-  }, [issue, newStatus, updateError])
+  }, [issue, newStatus, updateError, comments])
 
 
   return (
@@ -96,6 +98,7 @@ const IssueContent = (props: IssueContentProps) => {
         <Divider />
         <Box>
           <CreateComment issueId={issueId} />
+          <CommentContainer comments={comments} />
         </Box>
       </Grid>
       <Grid item xs={4}>

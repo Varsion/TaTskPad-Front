@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {
   Card, CardContent, Chip, Box, Avatar, Stack
 } from "@mui/material";
@@ -12,7 +12,7 @@ interface IssueStatusProps {
 
 const IssueStatusCard = (props: IssueStatusProps) => {
   const { keyNumber } = props;
-  const {data, loading, error} = useQuery(GET_ISSUE_DETAILS, {
+  const { data } = useQuery(GET_ISSUE_DETAILS, {
     variables: { keyNumber }
   });
 
@@ -21,12 +21,6 @@ const IssueStatusCard = (props: IssueStatusProps) => {
   const labels = data?.issue?.labels;
   const priority = data?.issue?.priority;
   const estimate = data?.issue?.estimate;
-
-  useEffect(()=>{
-    if(data) {
-      console.log(data);
-    }
-  }, [data]);
 
   return (
     <Card sx={{ minWidth: 300 }}>

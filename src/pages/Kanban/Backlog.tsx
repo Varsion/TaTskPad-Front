@@ -49,15 +49,12 @@ export default function Backlog() {
   }
 
   useEffect(() => {
-    if (buckets) {
-      console.log(buckets);
-    }
     if (error) {
       NotifyError(error.message);
       console.log(error);
     }
 
-  },[buckets, error]);
+  },[error]);
   
   
   return (

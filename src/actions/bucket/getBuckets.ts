@@ -7,6 +7,18 @@ export const GET_BUCKETS = gql`
         id
         name
         isRelease
+        issues {
+          id
+          title
+          keyNumber
+          status
+          genre
+          priority
+          assignee {
+            name
+            avatar
+          }
+        }
       }
     }
   }`;

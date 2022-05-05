@@ -7,10 +7,12 @@ import {
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
+import { useNavigate } from 'react-router';
 
 import SearchItem from "../../components/Items/SearchItem"
 
 const HeaderBar = () => {
+  const navigate = useNavigate();
   return (
     <AppBar sx={{ zIndex: (theme) => theme.zIndex.drawer + 1}}>
       <Toolbar>
@@ -33,17 +35,17 @@ const HeaderBar = () => {
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, mx: 1  }}>
           <List sx={{ display: { xs: 'none', md: 'flex' } }}>
           <ListItem button key={'Organizations'}>
-              <ListItemText primary={'Organizations'}>
+              <ListItemText primary={'Organizations'} onClick={ () => {navigate("/organization")} }>
                 Organizations
               </ListItemText>
             </ListItem>
             <ListItem button key={'Projects'}>
-              <ListItemText primary={'Projects'}>
+              <ListItemText primary={'Projects'} onClick={ () => {navigate("/project")} }>
                 Projects
               </ListItemText>
             </ListItem>
             <ListItem button key={'Members'}>
-              <ListItemText primary={'Members'}>
+              <ListItemText primary={'Members'} onClick={ () => {navigate("/member")} }>
                 Members
               </ListItemText>
             </ListItem>

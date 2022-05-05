@@ -18,19 +18,18 @@ const Issue = () => {
       <Box sx={{ flexGrow: 1, p: 3 }}>
       <Toolbar />
       <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/#/">
-          Projects
+        <Link underline="hover" color="inherit" href="/organization">
+          Organizations
         </Link>
-        <Link underline="hover" color="inherit" href="/#/">
+        <Link underline="hover" color="inherit" href="/project">
           TaTskPad
         </Link>
         <Link
           underline="hover"
           color="text.primary"
-          href="/#/"
           aria-current="page"
         >
-          Issue
+          {keyNumber}
         </Link>
       </Breadcrumbs>
       <IssueContent keyNumber={keyNumber} />

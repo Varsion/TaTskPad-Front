@@ -3,6 +3,7 @@ import {
   Box, Typography, Card, CardContent, Grid, Chip,
   Stack, CardActionArea, Avatar
 } from "@mui/material";
+import { useNavigate } from "react-router-dom"
 interface IssueType {
   id: string;
   title: string;
@@ -18,24 +19,25 @@ interface IssueType {
 export default function MinTable(props: IssueType) {
 
   const { id, title, keyNumber, status, genre, priority, assignee } = props;
+  const navigate = useNavigate();
 
   const handleClick = () => {
-
+    navigate(`/issue/${keyNumber}`);
   }
 
   return (
-    <Box margin={3} key={id}>
+    <Box margin={2} key={id}>
       {" "}
       <Card sx={{ minWidth: 275 }} key={id}>
         <CardActionArea onClick={handleClick}>
           <CardContent>
             <Grid container>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <Stack direction="row" spacing={1}>
                   <Chip variant="outlined" label={keyNumber} />
                 </Stack>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={7}>
                 <Typography variant="body2">{title}</Typography>
               </Grid>
               <Grid item xs={3}>

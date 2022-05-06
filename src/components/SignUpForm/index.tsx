@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import LoadingButton from '@mui/lab/LoadingButton';
-import { TextField, Box, Button, FormGroup } from '@mui/material';
+import { TextField, Box, FormGroup } from '@mui/material';
 import { SIGN_UP } from '../../actions/auth';
 import { NotifyError, NotifySuccess } from '../Notify';
-
-import { SignUpProps } from './types'
 
 interface SignUpValues {
   name: string

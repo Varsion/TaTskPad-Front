@@ -3,9 +3,14 @@ import {
   Box, Divider, Toolbar, Typography, Container, 
   Table, TableBody, TableHead,
   TableCell, TableContainer, 
-  TableRow, Paper,Button, Stack, Pagination
+  TableRow, Paper,Button, Stack, Pagination, 
+  FormGroup, MenuItem, Modal, Tab, Tabs,
+  FormControl, InputLabel,
 } from '@mui/material';
+import { NotifySuccess } from '../../components/Notify';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import HeaderBar from "../../components/Items/HeaderBar";
+import TabPanel from "../../components/Items/TabPanel";
 
 interface MembersType {
   id: number;
@@ -13,6 +18,19 @@ interface MembersType {
   enterTime: string;
   role: string;
 }
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  minHeight: 400,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
+
 
 const Members = () => {
 
@@ -22,6 +40,33 @@ const Members = () => {
     {id: 3, name: 'Jianhua 02', enterTime: '2022-05-04', role: 'Developer'},
     {id: 4, name: 'Jianhua 03', enterTime: '2022-05-04', role: 'Developer'},
   ]);
+
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [id, setId] = React.useState(0);
+  const [role, setRole] = React.useState('');
+  const handleModalOpen = (currentRole:string, currentId:number) => {
+    setModalOpen(true);
+    setRole(currentRole);
+    setId(currentId);
+  };
+  const handleModalClose = () => setModalOpen(false);
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setRole(event.target.value as string);
+  };
+
+  const handleSubmit = () => {
+    setMembers(members.map(member => {
+      if (member.id === id) {
+        member.role = role;
+      }
+      return member;
+    }));
+    NotifySuccess('Role Updated Success');
+    setTimeout(() => {
+      handleModalClose();
+    }, 5000);
+  }
 
 
   return (
@@ -67,7 +112,7 @@ const Members = () => {
                     </TableCell>
                     <TableCell align="right" sx={{display: 'flex'}} >
                       <Stack spacing={2} direction="row">
-                        <Button variant="contained">Settings</Button>
+                        <Button variant="contained" onClick={() => handleModalOpen(member.role, member.id)}>Settings</Button>
                       </Stack>
                     </TableCell>
                   </TableRow>
@@ -83,6 +128,54 @@ const Members = () => {
       <Box>
         <Pagination count={1} variant="outlined" shape="rounded" />
       </Box>
+
+      <Modal
+        open={modalOpen}
+        onClose={handleModalClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Tabs value={0} centered>
+            <Tab label="Member Role Update" />
+          </Tabs>
+          <Box>
+            <TabPanel value={0} index={0}>
+              <FormGroup sx={{
+                marginTop: 10,
+              }}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={role}
+                    label="Age"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={'Admin'}>Admin</MenuItem>
+                    <MenuItem value={'Developer'}>Developer</MenuItem>
+                    <MenuItem value={'Manger'}>Manger</MenuItem>
+                  </Select>
+                </FormControl>
+
+                  <Box style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: 20,
+                  }}>
+                    <Button  
+                      variant="contained"
+                      onClick={handleSubmit}
+                    >
+                        Update
+                    </Button>
+                  </Box>
+              </FormGroup>
+            </TabPanel>
+          </Box>
+        </Box>
+      </Modal>
 
     </Container>
   );

@@ -16,6 +16,9 @@ const SideBar = () => {
   const [plan, setPlan] = useState(true);
   const [dev, setDev] = useState(true);
 
+  const codeUrl = localStorage.getItem("codeUrl") || "";
+  const organizationName = localStorage.getItem("organizationName") || "";
+
   const navigate = useNavigate();
 
   const handlePlanClick = () => {
@@ -25,6 +28,10 @@ const SideBar = () => {
   const handleDevClick = () => {
     setDev(!dev);
   };
+
+  const toCode = () => {
+    window.open(codeUrl, "_blank")
+  }
   return (
     <Drawer
     variant="permanent"
@@ -39,9 +46,9 @@ const SideBar = () => {
       <List>
         <ListItem sx={{ pl: 4, mt: 2 }}>
           <ListItemIcon>
-            <Avatar {...StringAvatar("Chong Yaa")} />
+            <Avatar {...StringAvatar(organizationName)} />
           </ListItemIcon>
-          <ListItemText primary={"ChongYaa ORG"} />
+          <ListItemText primary={organizationName} />
         </ListItem>
       </List>
       {/* Planning */}
@@ -94,7 +101,7 @@ const SideBar = () => {
 
         <Collapse in={dev} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton sx={{ pl: 4 }} onClick={toCode}>
               <ListItemIcon>
                 <CodeIcon />
               </ListItemIcon>

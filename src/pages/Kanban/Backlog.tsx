@@ -11,6 +11,7 @@ import CreateBucket from "../../components/Bucket/CreateBucket";
 import { NotifyError } from "../../components/Notify";
 import { GET_BUCKETS } from "../../actions/bucket";
 import { useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 import HeaderBar from "../../components/Items/HeaderBar";
 import SideBar from "../../components/Items/SideBar";
@@ -28,6 +29,8 @@ const style = {
 };
 
 export default function Backlog() {
+
+  const navigate = useNavigate();
   const [tabValue, setTabValue] = React.useState(0);
   const [bucketOpen, setBucketOpen] = React.useState(false);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -45,7 +48,7 @@ export default function Backlog() {
   const buckets = data?.project?.buckets;
 
   const createIssue = () => {
-
+    navigate('/issue/create')
   }
 
   useEffect(() => {

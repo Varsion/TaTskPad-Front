@@ -12,6 +12,7 @@ query GetProjects($organizationId: ID!) {
       name
       keyWord
       logoUrl
+      codeUrl
     }
   }
 }`;

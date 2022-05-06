@@ -3,7 +3,7 @@ import {
    Card, CardActionArea, CardContent, CardMedia, Grid, Typography,
 } from '@mui/material';
 
-import { setOrganizationId } from '../Session';
+import { setOrganizationId, setOrganizationName } from '../Session';
 
 import { useNavigate } from 'react-router-dom'
 interface OrganizationProps {
@@ -20,6 +20,7 @@ const OrganizationCard = (props: OrganizationProps) => {
 
   const onClick = () => {
     setOrganizationId(id);
+    setOrganizationName(name);
     navigate("/project");
   }
 

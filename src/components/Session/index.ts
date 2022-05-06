@@ -13,3 +13,11 @@ export const setProjectId = (projectId: string) => {
 export const setOrganizationId = (organizationId: string) => {
   localStorage.setItem('organizationId', organizationId)
 }
+
+export const setOrganizationName = (organizationName: string) => {
+  localStorage.setItem('organizationName', organizationName)
+}
+
+export const setProjectCodeUrl = (codeUrl: string) => {
+  localStorage.setItem('codeUrl', codeUrl)
+}

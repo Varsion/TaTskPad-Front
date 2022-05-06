@@ -8,7 +8,7 @@ import {
 import { GET_PROJECT } from '../../actions/project'
 import { useQuery } from '@apollo/client'
 import { NotifyError } from '../Notify'
-import { setProjectId } from '../Session'
+import { setProjectId, setProjectCodeUrl } from '../Session'
 import { useNavigate } from 'react-router-dom'
 
 interface ProjectTableProps {
@@ -20,6 +20,7 @@ interface ProjectType {
   name: string
   logoUrl: string
   keyWord: string
+  codeUrl: string
 }
 
 const ProjectTable = (props: ProjectTableProps) => {
@@ -36,9 +37,10 @@ const ProjectTable = (props: ProjectTableProps) => {
   const owner = data?.organization?.owner
   const projects = data?.organization?.projects
 
-  const enter = (projectId: string) => {
-    console.log(projectId);
+  const enter = (projectId: string, codeUrl: string) => {
+    console.log(codeUrl);
     setProjectId(projectId);
+    setProjectCodeUrl(codeUrl);
     navigate("/");
   }
 
@@ -66,7 +68,7 @@ const ProjectTable = (props: ProjectTableProps) => {
               <TableRow><TableCell colSpan={4} align='center'>Loading...</TableCell></TableRow> :
               projects.length > 0 ?
                 projects.map((project: ProjectType, index: number) => (
-                    <TableRow key={project.id} onClick={(event) => enter(project.id)}>
+                    <TableRow key={project.id} onClick={(event) => enter(project.id, project.codeUrl)}>
                       <TableCell> {index+1} </TableCell>
                       <TableCell align='center'>
                         <Chip avatar={<Avatar />} label={project.name} />

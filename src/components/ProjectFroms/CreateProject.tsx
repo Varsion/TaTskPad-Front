@@ -21,12 +21,14 @@ const CreateProject = (props: ProjectFrom) => {
   interface CreateProjectInput {
     name: string
     keyWord: string
+    codeUrl: string
     projectClass: string
   }
 
   const defaultValues: CreateProjectInput = {
     name: '',
     keyWord: '',
+    codeUrl: '',
     projectClass: 'software'
   }
 
@@ -39,6 +41,9 @@ const CreateProject = (props: ProjectFrom) => {
     }
     if (errors) {
       NotifyError(errors[0].attribute + ' ' + errors[0].message)
+    }
+    if(error) {
+      console.log(error)
     }
   }, [project, errors, loading, error])
 
@@ -54,12 +59,13 @@ const CreateProject = (props: ProjectFrom) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    let { name, keyWord, projectClass } = values
+    let { name, keyWord, projectClass, codeUrl } = values
     createProject({
       variables: {
         input: {
           name,
           keyWord,
+          codeUrl,
           projectClass,
           organizationId
         }
@@ -72,6 +78,7 @@ const CreateProject = (props: ProjectFrom) => {
       <form onSubmit={handleSubmit}>
         <TextField fullWidth label="Project Name" id="name" margin="normal" value={values.name} required/>
         <TextField fullWidth label="Project Key Word" id="keyWord" margin="normal" value={values.keyWord} required/>
+        <TextField fullWidth label="Project Code Repository" id="codeUrl" margin="normal" value={values.codeUrl}/>
         <TextField fullWidth label="Project Class" id="class" margin="normal" value={'software'} required disabled/>
 
         <Box style={{

@@ -7,6 +7,11 @@ export const GET_BUCKETS = gql`
         id
         name
         isRelease
+        sprint {
+          id
+          name
+          version
+        }
         issues {
           id
           title

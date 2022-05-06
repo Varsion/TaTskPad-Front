@@ -8,6 +8,7 @@ import SideBar from "../../components/Items/SideBar";
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

@@ -5,7 +5,7 @@ import {
   TableCell, TableContainer, 
   TableRow, Paper,Button, Stack, Pagination, 
   FormGroup, MenuItem, Modal, Tab, Tabs,
-  FormControl, InputLabel,
+  FormControl, InputLabel, TextField,
 } from '@mui/material';
 import { NotifySuccess } from '../../components/Notify';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -42,6 +42,7 @@ const Members = () => {
   ]);
 
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [inviteModal, setInviteModal] = React.useState(false);
   const [id, setId] = React.useState(0);
   const [role, setRole] = React.useState('');
   const handleModalOpen = (currentRole:string, currentId:number) => {
@@ -50,6 +51,15 @@ const Members = () => {
     setId(currentId);
   };
   const handleModalClose = () => setModalOpen(false);
+
+  const handleInviteModalClose = () => setInviteModal(false);
+  const handleInviteModalOpen = () => setInviteModal(true);
+  const handleInvite = () => {
+    NotifySuccess('Invite email will send in later');
+    setTimeout(() => {
+      handleInviteModalClose();
+    }, 5000);
+  }
 
   const handleChange = (event: SelectChangeEvent) => {
     setRole(event.target.value as string);
@@ -77,7 +87,7 @@ const Members = () => {
         <Typography variant="h5">
           Members
         </Typography>
-        <Button variant="contained" sx={{ml:120}}>Invite</Button>
+        <Button variant="contained" sx={{ml:120}} onClick={handleInviteModalOpen}>Invite</Button>
       </Box>
       <Divider />
       <br />
@@ -177,6 +187,42 @@ const Members = () => {
         </Box>
       </Modal>
 
+      <Modal
+        open={inviteModal}
+        onClose={handleInviteModalClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Tabs value={0} centered>
+            <Tab label="Member Role Update" />
+          </Tabs>
+          <Box>
+            <TabPanel value={0} index={0}>
+              <FormGroup sx={{
+                marginTop: 10,
+              }}>
+
+                  <TextField fullWidth label="New Member Email" id="email" margin="normal" required/>
+
+
+                  <Box style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: 20,
+                  }}>
+                    <Button  
+                      variant="contained"
+                      onClick={handleInvite}
+                    >
+                        Invite
+                    </Button>
+                  </Box>
+              </FormGroup>
+            </TabPanel>
+          </Box>
+        </Box>
+      </Modal>
     </Container>
   );
 }

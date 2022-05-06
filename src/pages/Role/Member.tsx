@@ -136,7 +136,11 @@ const Members = () => {
       <br />
 
       <Box>
-        <Pagination count={1} variant="outlined" shape="rounded" />
+        <Pagination
+          count={1}
+          color="primary"
+          sx={{ position: "absolute", bottom: 100, right: 150 }}
+        />
       </Box>
 
       <Modal

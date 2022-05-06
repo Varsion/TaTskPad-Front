@@ -45,7 +45,7 @@ const HeaderBar = () => {
               </ListItemText>
             </ListItem>
             <ListItem button key={'Members'}>
-              <ListItemText primary={'Members'} onClick={ () => {navigate("/member")} }>
+              <ListItemText primary={'Members'} onClick={ () => {navigate("/members")} }>
                 Members
               </ListItemText>
             </ListItem>

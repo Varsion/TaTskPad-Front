@@ -11,6 +11,7 @@ import { NotifySuccess } from '../../components/Notify';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import HeaderBar from "../../components/Items/HeaderBar";
 import TabPanel from "../../components/Items/TabPanel";
+import SideBar from "../../components/Items/SideBar";
 
 interface MembersType {
   id: number;
@@ -83,6 +84,7 @@ const Members = () => {
     <Container sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'column', mt:10 }}>
       <Toolbar />
       <HeaderBar />
+      <SideBar />
       <Box display={'flex'}>
         <Typography variant="h5">
           Members
@@ -169,7 +171,7 @@ const Members = () => {
                   >
                     <MenuItem value={'Admin'}>Admin</MenuItem>
                     <MenuItem value={'Developer'}>Developer</MenuItem>
-                    <MenuItem value={'Manger'}>Manger</MenuItem>
+                    <MenuItem value={'Manger'}>Manager</MenuItem>
                   </Select>
                 </FormControl>
 

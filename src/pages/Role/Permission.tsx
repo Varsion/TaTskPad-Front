@@ -9,6 +9,7 @@ import { GET_ROLE } from "../../actions/role";
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import HeaderBar from "../../components/Items/HeaderBar";
+import SideBar from "../../components/Items/SideBar";
 import { NotifySuccess } from '../../components/Notify';
 
 interface RoleType {
@@ -60,6 +61,7 @@ const Permissions = () =>{
     <Container sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'column', mt:10 }}>
       <Toolbar />
       <HeaderBar />
+      <SideBar />
       <Typography variant="h5">
         {role?.name}
       </Typography>

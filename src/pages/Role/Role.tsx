@@ -7,6 +7,7 @@ import {
   Pagination, FormGroup, Modal, Tab, Tabs, TextField
 } from '@mui/material';
 import HeaderBar from "../../components/Items/HeaderBar";
+import SideBar from "../../components/Items/SideBar";
 import TabPanel from "../../components/Items/TabPanel";
 import { GET_ROLES } from "../../actions/role";
 import { useQuery } from '@apollo/client';
@@ -64,6 +65,7 @@ const Roles = () => {
     <Container sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'column', mt:10 }}>
       <Toolbar />
       <HeaderBar />
+      <SideBar />
       <Box display={'flex'}>
         <Typography variant="h5">
           Roles

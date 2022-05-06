@@ -34,19 +34,14 @@ const HeaderBar = () => {
         </Typography>
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, mx: 1  }}>
           <List sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <ListItem button key={'Organizations'}>
-              <ListItemText primary={'Organizations'} onClick={ () => {navigate("/organization")} }>
+          <ListItem button key={'Organizations'} onClick={ () => {navigate("/organization")} }>
+              <ListItemText primary={'Organizations'}>
                 Organizations
               </ListItemText>
             </ListItem>
-            <ListItem button key={'Projects'}>
-              <ListItemText primary={'Projects'} onClick={ () => {navigate("/project")} }>
+            <ListItem button key={'Projects'} onClick={ () => {navigate("/project")} }>
+              <ListItemText primary={'Projects'}>
                 Projects
-              </ListItemText>
-            </ListItem>
-            <ListItem button key={'Members'}>
-              <ListItemText primary={'Members'} onClick={ () => {navigate("/members")} }>
-                Members
               </ListItemText>
             </ListItem>
             <ListItem button key={'KnowledgeBase'}>

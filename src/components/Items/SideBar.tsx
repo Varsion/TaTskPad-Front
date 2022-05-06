@@ -12,6 +12,8 @@ import WidgetsIcon from "@mui/icons-material/Widgets";
 import CodeIcon from "@mui/icons-material/Code";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import StringAvatar from "../Functions/StringAvatar";
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 const SideBar = () => {
 
@@ -55,18 +57,18 @@ const SideBar = () => {
 
         <Collapse in={plan} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 6 }}>
+            <ListItemButton sx={{ pl: 6 }} onClick={ () => {navigate("/backlog")} }>
               <ListItemIcon>
                 <ListAltIcon />
               </ListItemIcon>
-              <ListItemText primary="ToDo" onClick={ () => {navigate("/backlog")} } />
+              <ListItemText primary="ToDo"/>
             </ListItemButton>
 
-            <ListItemButton sx={{ pl: 6 }}>
+            <ListItemButton sx={{ pl: 6 }} onClick={ () => {navigate("/")} } >
               <ListItemIcon>
                 <ViewWeekIcon />
               </ListItemIcon>
-              <ListItemText primary="Sprint" onClick={ () => {navigate("/")} } />
+              <ListItemText primary="Sprint"/>
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 6 }}>
@@ -83,11 +85,18 @@ const SideBar = () => {
               <ListItemText primary="Matters" />
             </ListItemButton>
 
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton sx={{ pl: 4 }} onClick={ () => {navigate("/members")} }>
               <ListItemIcon>
-                <WidgetsIcon />
+                <PeopleOutlineIcon />
               </ListItemIcon>
-              <ListItemText primary="Blocks" />
+              <ListItemText primary="Members" />
+            </ListItemButton>
+
+            <ListItemButton sx={{ pl: 4 }} onClick={ () => {navigate("/roles")} }>
+              <ListItemIcon>
+                <PermIdentityIcon />
+              </ListItemIcon>
+              <ListItemText primary="Roles" />
             </ListItemButton>
           </List>
         </Collapse>
@@ -108,12 +117,6 @@ const SideBar = () => {
                 <CodeIcon />
               </ListItemIcon>
               <ListItemText primary="Codes" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <AccountTreeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Releases" />
             </ListItemButton>
           </List>
         </Collapse>

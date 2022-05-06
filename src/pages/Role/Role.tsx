@@ -11,6 +11,8 @@ import TabPanel from "../../components/Items/TabPanel";
 import { GET_ROLES } from "../../actions/role";
 import { useQuery } from '@apollo/client';
 
+import { useNavigate } from 'react-router-dom';
+
 import CreateRole from "../../components/Role/CreateRole";
 
 const style = {
@@ -26,7 +28,7 @@ const style = {
 };
 
 interface RolesType {
-  id: number;
+  id: string;
   name: string;
   active?: boolean;
 }
@@ -34,6 +36,7 @@ interface RolesType {
 const Roles = () => {
 
   const organizationId = localStorage.getItem("organizationId");
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_ROLES, {
     variables: { organizationId }
@@ -44,6 +47,10 @@ const Roles = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
   const handleModalClose = () => setModalOpen(false);
   const handleModalOpen = () => setModalOpen(true);
+
+  const enterPermission = (id: string) => {
+    navigate(`/permission/${id}`);
+  }
   
 
   React.useEffect(() => {
@@ -86,7 +93,7 @@ const Roles = () => {
                               <Chip label="enabled" color="success" /> :
                                 <Chip label="disabled" color="error" />
                           }
-                          <Button variant="contained">Settings</Button>
+                          <Button variant="contained" onClick={() => enterPermission(role.id)}>Settings</Button>
                         </Stack>
                       </TableCell>
                     </TableRow>

@@ -30,7 +30,7 @@ export default function Router() {
 
         <Route path="/members" element={<Members />} />
         <Route path="/roles" element={<Roles />} />
-        <Route path="/permissions/:roleId" element={<Permissions />} />
+        <Route path="/permission/:id" element={<Permissions />} />
 
         <Route path="/issue/:keyNumber" element={<Issue />} />
         {/* Pending */}

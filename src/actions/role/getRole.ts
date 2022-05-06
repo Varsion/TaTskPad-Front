@@ -5,6 +5,7 @@ export const GET_ROLE = gql`
     role(id: $id) {
       name
       description
+      active
       permissions {
         scope
         actions {

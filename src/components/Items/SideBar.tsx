@@ -71,20 +71,6 @@ const SideBar = () => {
               <ListItemText primary="Sprint"/>
             </ListItemButton>
 
-            <ListItemButton sx={{ pl: 6 }}>
-              <ListItemIcon>
-                <AutoGraphIcon />
-              </ListItemIcon>
-              <ListItemText primary="Report" />
-            </ListItemButton>
-
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <CorporateFareIcon />
-              </ListItemIcon>
-              <ListItemText primary="Matters" />
-            </ListItemButton>
-
             <ListItemButton sx={{ pl: 4 }} onClick={ () => {navigate("/members")} }>
               <ListItemIcon>
                 <PeopleOutlineIcon />

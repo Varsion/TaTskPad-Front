@@ -84,7 +84,7 @@ export default function Backlog() {
         </Breadcrumbs>
         <Box sx={{ display: "flex", flexGrow: 1, mt: 3 }}>
           <Grid item xs={8} sx={{ display: "flex", alignItems: "center" }}>
-            <TextField
+            {/* <TextField
               fullWidth
               id="outlined-basic"
               label="Search in Current Board"
@@ -93,7 +93,7 @@ export default function Backlog() {
             />
             <SearchIcon
               sx={{ color: "action.active", mr: 1, my: 0.5, fontSize: 30 }}
-            />
+            /> */}
           </Grid>
           <Grid item xs={4}>
             <Stack direction="row-reverse" spacing={1}>

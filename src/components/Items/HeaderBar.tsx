@@ -67,7 +67,7 @@ const HeaderBar = () => {
             </ListItem>
           </List>
         </Box>
-        <SearchItem />
+        {/* <SearchItem /> */}
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <IconButton
             size="large"

@@ -8,6 +8,11 @@ export const GET_ISSUE = gql`
       description
       genre
       status
+      priority
+      assignee {
+        id
+      }
+      estimate
       comments {
         id
         content

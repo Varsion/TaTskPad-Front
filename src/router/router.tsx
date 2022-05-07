@@ -12,6 +12,7 @@ import CreateIssue from "../pages/Issue/CreateIssue";
 import Members from "../pages/Role/Member";
 import Roles from "../pages/Role/Role";
 import Permissions from "../pages/Role/Permission";
+import UpdateIssue from "../pages/Issue/UpdateIssue";
 
 export default function Router() {
   return (
@@ -33,9 +34,8 @@ export default function Router() {
         <Route path="/permission/:id" element={<Permissions />} />
 
         <Route path="/issue/:keyNumber" element={<Issue />} />
-        {/* Pending */}
-        <Route path="/issue/:keyNumber/update" element={<CreateIssue />} />
         <Route path="/issue/create" element={<CreateIssue />} />
+        <Route path="/issue/:keyNumber/update" element={<UpdateIssue />} />
       </Routes>
     </BrowserRouter>
   );

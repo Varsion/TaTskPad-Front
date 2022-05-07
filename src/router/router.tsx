@@ -13,6 +13,7 @@ import Members from "../pages/Role/Member";
 import Roles from "../pages/Role/Role";
 import Permissions from "../pages/Role/Permission";
 import UpdateIssue from "../pages/Issue/UpdateIssue";
+import AccountPage from "../pages/Account/AccountPage";
 
 export default function Router() {
   return (
@@ -36,6 +37,8 @@ export default function Router() {
         <Route path="/issue/:keyNumber" element={<Issue />} />
         <Route path="/issue/create" element={<CreateIssue />} />
         <Route path="/issue/:keyNumber/update" element={<UpdateIssue />} />
+
+        <Route path="/account" element={<AccountPage />} />
       </Routes>
     </BrowserRouter>
   );

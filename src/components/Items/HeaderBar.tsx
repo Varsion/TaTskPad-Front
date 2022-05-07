@@ -1,17 +1,34 @@
 import * as React from 'react';
 import {
-  IconButton, Box, AppBar, 
+  IconButton, Box, AppBar, Menu, MenuItem, 
   Toolbar, List, Typography, ListItem, ListItemText
 } from '@mui/material';
 
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 import { useNavigate } from 'react-router';
+import { ClearToken } from '../../components/Session';
+import { NotifySuccess } from '../../components/Notify';
 
 import SearchItem from "../../components/Items/SearchItem"
 
 const HeaderBar = () => {
   const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const logout = () => {
+    NotifySuccess("Logout Success");
+    ClearToken();
+    navigate('/sign_in');
+  }
+
   return (
     <AppBar sx={{ zIndex: (theme) => theme.zIndex.drawer + 1}}>
       <Toolbar>
@@ -58,9 +75,22 @@ const HeaderBar = () => {
             aria-label="account of current user"
             aria-haspopup="true"
             color="inherit"
+            onClick={handleClick}
           >
             <AccountCircle />
           </IconButton>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={logout}>Logout</MenuItem>
+          </Menu>
         </Box>
       </Toolbar>
     </AppBar>

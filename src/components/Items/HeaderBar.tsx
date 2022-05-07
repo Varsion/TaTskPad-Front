@@ -5,7 +5,6 @@ import {
 } from '@mui/material';
 
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import SettingsIcon from '@mui/icons-material/Settings';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 import { useNavigate } from 'react-router';
 
@@ -53,12 +52,6 @@ const HeaderBar = () => {
         </Box>
         <SearchItem />
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <IconButton
-            size="large"
-            color="inherit"
-          >
-            <SettingsIcon />
-          </IconButton>
           <IconButton
             size="large"
             edge="end"

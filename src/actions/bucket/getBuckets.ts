@@ -6,11 +6,11 @@ export const GET_BUCKETS = gql`
       buckets {
         id
         name
-        isRelease
         sprint {
           id
           name
           version
+          isCurrent
         }
         issues {
           id

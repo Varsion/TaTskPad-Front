@@ -111,10 +111,10 @@ export default function Kanban() {
             <Grid item xs={2}>
               <Stack direction="row-reverse" spacing={1}>
                 <Button variant="contained" size="small" endIcon={<DoneAllIcon />}>
-                  Finish
+                  完成冲刺
                 </Button>
                 <Button variant="contained" size="small" endIcon={<AddIcon />} onClick={() => navigate("/issue/create")}>
-                  Create
+                  新建问题
                 </Button>
               </Stack>
             </Grid>

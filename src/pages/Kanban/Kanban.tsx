@@ -25,36 +25,8 @@ import { useQuery } from "@apollo/client";
 import { useNavigate } from "react-router";
 import { GET_CURRENT_SPRINT } from "../../actions/sprint";
 import IssueCard from "../../components/Issue/IssueCard";
-import Section from "../../classes/Section";
-import Column from "../../components/Column";
-import Buttons from "../../components/primitives/Buttons";
-import Input from "../../components/primitives/Input";
-import state from "../../state";
 import "./kanban.css";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
-interface IssueType {
-  id: string;
-  title: string;
-  author: AccountType;
-  assignee?: AccountType;
-  keyNumber: string;
-  status: string;
-  genre: string;
-  priority: string;
-}
-
-interface AccountType {
-  name: string;
-  avatar: string;
-}
+import DragList from "../../components/dragAnddrop/DragList";
 const defaultValues: IssueType[] = [
   {
     id: "1",
@@ -93,31 +65,31 @@ const defaultValues: IssueType[] = [
     priority: "p1",
   },
 ];
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
+interface IssueType {
+  id: string;
+  title: string;
+  author: AccountType;
+  assignee?: AccountType;
+  keyNumber: string;
+  status: string;
+  genre: string;
+  priority: string;
+}
+
+interface AccountType {
+  name: string;
+  avatar: string;
+}
+
 export const Kanban = () => {
-  function onDragEnd(result: DropResult) {
-    const { source, destination } = result;
-
-    if (!destination) return;
-
-    if (source.droppableId === destination.droppableId) {
-      state.columns
-        .filter((col) => {
-          return col.getId() === +destination.droppableId;
-        })[0]
-        .updateList(source.index, destination.index);
-    } else {
-      let sourceColumn: Section = state.columns.filter((col) => {
-        return col.getId() === +source.droppableId;
-      })[0];
-      let destinationColumn: Section = state.columns.filter((col) => {
-        return col.getId() === +destination.droppableId;
-      })[0];
-
-      let tmp = sourceColumn.list[source.index];
-      sourceColumn.removeTask(tmp.getId());
-      destinationColumn.addTask(tmp, destination.index);
-    }
-  }
   const navigate = useNavigate();
   const projectId = localStorage.getItem("projectId");
 
@@ -144,11 +116,11 @@ export const Kanban = () => {
 
   return (
     <Box sx={{ flexGrow: 1, display: "flex" }}>
-      {/* <HeaderBar /> */}
-      {/* <SideBar /> */}
+      <HeaderBar />
+      <SideBar />
       <Box sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        {/* <Breadcrumbs aria-label="breadcrumb">
+        <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/#/">
             Projects
           </Link>
@@ -160,13 +132,13 @@ export const Kanban = () => {
           >
             Sprint Board
           </Link>
-        </Breadcrumbs> */}
+        </Breadcrumbs>
         <Box sx={{ display: "flex", flexGrow: 1, mt: 3 }}>
           <Grid container spacing={2}>
             {/* Header */}
             <Grid item xs={2} sx={{ display: "flex", alignItems: "center" }}>
               <Typography variant="h4" component="h2">
-                {/* {sprint ? sprint.name + " " + sprint.version : "None"} */}
+                {sprint ? sprint.name + " " + sprint.version : "None"}
               </Typography>
             </Grid>
             <Grid item xs={8} sx={{ display: "flex", alignItems: "center" }}>
@@ -193,44 +165,10 @@ export const Kanban = () => {
               </Stack>
             </Grid>
             {/* Header */}
-            <Grid container spacing={8}>
-              <div className="container">
-                <div className="row-wrappable">
-                  <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
-                    {state.columns.map((column) => (
-                      <div className="col-s4-h-100p">
-                        <Column
-                          list={column.list}
-                          header={column.header}
-                          newTask={column.newTask}
-                          itemId={column.getId()}
-                          onColumnRemove={(id) => state.removeColumn(id)}
-                          onTaskAdd={(task) => column.addTask(task)}
-                          onTaskRemove={(id) => column.removeTask(id)}
-                          onNewTaskChange={(task) =>
-                            column.newTaskChanged(task)
-                          }
-                        />
-                      </div>
-                    ))}
-                  </DragDropContext>
-                  <div className="col-s4">
-                    <h5>Add Column</h5>
-                    <Input
-                      placeholder="Column-name"
-                      value={state.addColumnForm.name}
-                      onChange={(text) =>
-                        state.addColumnForm.setColumnForm(text)
-                      }
-                    />
-                    <Buttons
-                      text="Add column"
-                      classes=""
-                      onClick={state.addColumnForm.addSection}
-                    />
-                  </div>
-                </div>
-              </div>
+            <Grid container spacing={6}>
+              <Box className="DragList">
+                <DragList />
+              </Box>
             </Grid>
           </Grid>
         </Box>

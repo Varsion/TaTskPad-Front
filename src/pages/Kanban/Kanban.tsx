@@ -26,7 +26,6 @@ const Item = styled(Paper)(({ theme }) => ({
 interface IssueType {
   id: string;
   title: string;
-  author: AccountType;
   assignee?: AccountType;
   keyNumber: string;
   status: string;
@@ -42,13 +41,18 @@ interface AccountType {
 export default function Kanban() {
 
 
-  const defaultValues:IssueType[] = [
-    {id: "1", title: "hello-1", author: {name: "John", avatar: "https://avatars0.githubusercontent.com/u/174825?s=460&v=4"}, keyNumber: "KEY-1", status: "TODO", genre: "bug", priority: "p1"},
-    {id: "2", title: "hello-2", author: {name: "John", avatar: "https://avatars0.githubusercontent.com/u/174825?s=460&v=4"}, keyNumber: "KEY-2", status: "TODO", genre: "story", priority: "p1"},
-    {id: "3", title: "hello-3", author: {name: "John", avatar: "https://avatars0.githubusercontent.com/u/174825?s=460&v=4"}, keyNumber: "KEY-3", status: "TODO", genre: "story", priority: "p1"}
-  ]
+  // const defaultValues:IssueType[] = [
+  //   {id: "1", title: "hello-1", author: {name: "John", avatar: "https://avatars0.githubusercontent.com/u/174825?s=460&v=4"}, keyNumber: "KEY-1", status: "TODO", genre: "bug", priority: "p1"},
+  //   {id: "2", title: "hello-2", author: {name: "John", avatar: "https://avatars0.githubusercontent.com/u/174825?s=460&v=4"}, keyNumber: "KEY-2", status: "TODO", genre: "story", priority: "p1"},
+  //   {id: "3", title: "hello-3", author: {name: "John", avatar: "https://avatars0.githubusercontent.com/u/174825?s=460&v=4"}, keyNumber: "KEY-3", status: "TODO", genre: "story", priority: "p1"}
+  // ]
   const navigate = useNavigate();
   const projectId = localStorage.getItem('projectId');
+
+  const [backlogs, setBacklogs] = React.useState<IssueType[]>([]);
+  const [todos, setTodos] = React.useState<IssueType[]>([]);
+  const [doings, setDoings] = React.useState<IssueType[]>([]);
+  const [dones, setDones] = React.useState<IssueType[]>([]);
 
   const { data, loading, error } = useQuery(GET_CURRENT_SPRINT, {
     variables: {
@@ -57,14 +61,17 @@ export default function Kanban() {
   })
 
   const sprint = data?.project?.currentSprint;
-  const issues = sprint?.issueList?.issues;
+  const issues: IssueType[] = sprint?.issueList?.issues;
 
   useEffect(() => {
     if(sprint) {
       console.log(sprint)
     }
     if(issues) {
-      console.log(issues)
+      setBacklogs(issues.filter(issue => issue.status === "backlog"));
+      setTodos(issues.filter(issue => issue.status === "Todo"));
+      setDoings(issues.filter(issue => issue.status === "Doing"));
+      setDones(issues.filter(issue => issue.status === "Done"));
       if (issues.length === 0) {
         NotifyError("Current Sprint has no issues")
       }
@@ -120,31 +127,104 @@ export default function Kanban() {
             </Grid>
             {/* Header */}
             <Grid container spacing={2}>
-            <Grid item xs={3}>
+              <Grid item xs={3}>
                 <Item>
                   <Tab label="Backlog" disabled/>
                   <Stack direction="column" spacing={2}>
-                    <IssueCard />
-                    <IssueCard />
-                    <IssueCard />
-                    <IssueCard />
+                    {
+                      backlogs.length > 0 ?
+                        backlogs.map(issue => {
+                          return <IssueCard
+                                    id={issue.id}
+                                    title={issue.title}
+                                    assignee={issue.assignee}
+                                    keyNumber={issue.keyNumber}
+                                    status={issue.status}
+                                    genre={issue.genre}
+                                    priority={issue.priority}
+                                    key={issue.id} 
+                                  />
+                        }) :
+                        <Typography variant="body2" component="p">
+                          当前泳道为空
+                        </Typography>
+                    }
                   </Stack>
                 </Item>
               </Grid>
               <Grid item xs={3}>
                 <Item>
                   <Tab label="ToDo" disabled/>
-                  <IssueCard />
+                  <Stack direction="column" spacing={2}>
+                    {
+                      todos.length > 0 ?
+                        todos.map(issue => {
+                          return <IssueCard
+                                    id={issue.id}
+                                    title={issue.title}
+                                    assignee={issue.assignee}
+                                    keyNumber={issue.keyNumber}
+                                    status={issue.status}
+                                    genre={issue.genre}
+                                    priority={issue.priority}
+                                    key={issue.id} 
+                                  />
+                        }) :
+                        <Typography variant="body2" component="p">
+                          当前泳道为空
+                        </Typography>
+                    }
+                  </Stack>
                 </Item>
               </Grid>
               <Grid item xs={3}>
                 <Item>
                   <Tab label="Doing" disabled/>
+                  <Stack direction="column" spacing={2}>
+                    {
+                      doings.length > 0 ?
+                        doings.map(issue => {
+                          return <IssueCard
+                                    id={issue.id}
+                                    title={issue.title}
+                                    assignee={issue.assignee}
+                                    keyNumber={issue.keyNumber}
+                                    status={issue.status}
+                                    genre={issue.genre}
+                                    priority={issue.priority}
+                                    key={issue.id} 
+                                  />
+                        }) :
+                        <Typography variant="body2" component="p">
+                          当前泳道为空
+                        </Typography>
+                    }
+                  </Stack>
                 </Item>
               </Grid>
               <Grid item xs={3}>
                 <Item>
                   <Tab label="Done" disabled/>
+                  <Stack direction="column" spacing={2}>
+                    {
+                      dones.length > 0 ?
+                        dones.map(issue => {
+                          return <IssueCard
+                                    id={issue.id}
+                                    title={issue.title}
+                                    assignee={issue.assignee}
+                                    keyNumber={issue.keyNumber}
+                                    status={issue.status}
+                                    genre={issue.genre}
+                                    priority={issue.priority}
+                                    key={issue.id} 
+                                  />
+                        }) :
+                        <Typography variant="body2" component="p">
+                          当前泳道为空
+                        </Typography>
+                    }
+                  </Stack>
                 </Item>
               </Grid>
             </Grid>

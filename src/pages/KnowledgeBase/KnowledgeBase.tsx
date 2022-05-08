@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { LoadingButton } from '@mui/lab';
 import {NotifyError, NotifySuccess} from '../../components/Notify';
 import ReactQuill from 'react-quill';
+import { checkDocument } from '@apollo/client/utilities';
 
 
 const Transition = React.forwardRef(function Transition(
@@ -45,6 +46,18 @@ const KnowledgeBase = () => {
     setTitle(value);
   };
 
+  const handleCreateDocument = () => {
+    createDocument({
+      variables: {
+        input: {
+          projectId,
+          title,
+          content,
+          knowledgeBaseId: knowledgeBase.id
+        }
+      }
+    })
+  }
 
   const projectId = localStorage.getItem("projectId") || "";
 
@@ -58,17 +71,27 @@ const KnowledgeBase = () => {
 
   const knowledgeBase = defaultData?.project?.defaultKnowledgeBase;
   const documents = knowledgeBase?.documents;
-  const document = documents?.[0];
+  const defaultDocument = documents?.[0];
+
+  const [document, setDocument] = React.useState({
+    title: "",
+    content: ""
+  });
 
   const createError = data?.createDocument?.errors;
   const createData = data?.createDocument?.document;
+
+  const toggleDocument = (index: number) => {
+    console.log(documents[index]);
+    setDocument(documents[index]);
+  }
 
   useEffect(() => {
     if(knowledgeBase) {
       console.log(knowledgeBase)
     }
     if(documents) {
-      console.log(documents.length)
+      console.log(documents)
     }
     if(createError) {
       NotifyError(createError[0].attribute+ ' ' + createError[0].message)
@@ -76,20 +99,13 @@ const KnowledgeBase = () => {
     if(createData) {
       NotifySuccess('Document created successfully')
     }
-  }, [defaultData, knowledgeBase, documents, createError, createData]);
-
-  const handleCreateDocument = () => {
-    createDocument({
-      variables: {
-        input: {
-          projectId,
-          title,
-          content,
-          knowledgeBaseId: knowledgeBase.id
-        }
-      }
-    })
-  }
+    if(defaultDocument) {
+      setDocument(defaultDocument)
+    }
+    if(content) {
+      console.log(content);
+    }
+  }, [defaultData, knowledgeBase, documents, createError, createData, defaultDocument, content]);
 
   return (
     <Box sx={{ flexGrow: 1, display: "flex" }}>
@@ -129,7 +145,7 @@ const KnowledgeBase = () => {
             documents?.length > 0 ?
               documents.map((document:any, index: number) => {
                 return (
-                  <ListItemButton sx={{ pl: 6 }}>
+                  <ListItemButton sx={{ pl: 6 }} key={index} onClick={ () => toggleDocument(index) }>
                     <ListItemText primary={document.title} />
                   </ListItemButton>
                 )
@@ -158,13 +174,15 @@ const KnowledgeBase = () => {
       </Breadcrumbs>
       <Toolbar />
       {
-        document ?
+        document.title ?
           <Box sx={{pl: 3}}>
             <Typography variant="h4">
-              Title
+              {document.title}
             </Typography>
             <Typography variant="body1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              {
+                document.content ? <div dangerouslySetInnerHTML={{ __html: document.content }} /> : "No content"
+              }
             </Typography>
           </Box>
           :

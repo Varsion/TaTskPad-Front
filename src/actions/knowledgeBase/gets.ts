@@ -10,6 +10,7 @@ export const GET_KNOWLEDGE_BASES = gql`
         documents {
           id
           title
+          content
         }
       }
     }

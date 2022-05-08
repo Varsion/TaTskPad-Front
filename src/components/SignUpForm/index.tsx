@@ -45,7 +45,7 @@ const SignUpForm = () => {
   useEffect(() => {
     if (account) {
       NotifySuccess('账户创建成功')
-      window.location.href = '/#/sign_in'
+      window.location.href = '/sign_in'
     }
     if (errors) {
       NotifyError(errors[0].attribute+ ' ' + errors[0].message)

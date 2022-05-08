@@ -30,7 +30,7 @@ export default function SignIn() {
           </Typography>
 
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            已经有账户了？ <Link href="/#/sign_in">登陆</Link>
+            已经有账户了？ <Link href="/sign_in">登陆</Link>
           </Typography>
           <SignUpForm />
         </CardContent>

@@ -24,7 +24,7 @@ export default function SignIn() {
           </Typography>
 
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              还没有账户？ <Link href="/#/sign_up" variant="body2">现在创建账户</Link>
+              还没有账户？ <Link href="/sign_up" variant="body2">现在创建账户</Link>
           </Typography>
           <SignInForm />
         </CardContent>

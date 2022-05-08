@@ -26,7 +26,7 @@ const SignInForm = () => {
     if (account) {
       localStorage.setItem('token', account?.token)
       NotifySuccess('登陆成功')
-      window.location.href = '/#/'
+      window.location.href = '/'
     }
     if (errors) {
       NotifyError(errors[0].message)

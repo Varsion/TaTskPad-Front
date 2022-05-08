@@ -25,7 +25,7 @@ const SignInForm = () => {
   useEffect(() => {
     if (account) {
       localStorage.setItem('token', account?.token)
-      NotifySuccess('Sign in success')
+      NotifySuccess('登陆成功')
       window.location.href = '/#/'
     }
     if (errors) {
@@ -59,8 +59,8 @@ const SignInForm = () => {
   return (
     <FormGroup onChange={handleInputChange}>
       <form onSubmit={handleSubmit}>
-        <TextField fullWidth label="Email" id="email" margin="normal" value={values.email} required/>
-        <TextField fullWidth label="Password" id="password" margin="normal" value={values.password} type="password" required/>
+        <TextField fullWidth label="邮箱" id="email" margin="normal" value={values.email} required/>
+        <TextField fullWidth label="密码" id="password" margin="normal" value={values.password} type="password" required/>
 
         <Box style={{
           display: 'flex',
@@ -70,7 +70,7 @@ const SignInForm = () => {
             loading={loading} 
             variant="contained" 
             type="submit">
-              Sign In
+              登陆
           </LoadingButton>
         </Box>
       </form>

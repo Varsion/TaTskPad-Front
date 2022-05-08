@@ -127,7 +127,7 @@ const KnowledgeBase = () => {
           </ListItem>
           <ListItem sx={{ pl: 4, mt: 2 }}>
             <Stack direction="row" spacing={2}>
-              <Button variant="contained" size='small' onClick={handleClickOpen}>New Doc</Button>
+              <Button variant="contained" size='small' onClick={handleClickOpen}>新建文档</Button>
             </Stack>
           </ListItem>
         </List>
@@ -139,7 +139,7 @@ const KnowledgeBase = () => {
             <ListItemIcon>
               <FolderIcon />
             </ListItemIcon>
-            <ListItemText primary="Knowledge Base" />
+            <ListItemText primary="团队知识库" />
           </ListItemButton>
           {
             documents?.length > 0 ?
@@ -152,7 +152,7 @@ const KnowledgeBase = () => {
               }) : 
               <ListItemButton sx={{ pl: 6 }}>
                 <Typography>
-                  No documents founds
+                  当前知识库没有文档
                 </Typography>
               </ListItemButton>
           }
@@ -169,7 +169,7 @@ const KnowledgeBase = () => {
           color="text.primary"
           href="/account"
         >
-          Knowledge Base
+          团队知识库
         </Link>
       </Breadcrumbs>
       <Toolbar />
@@ -188,7 +188,7 @@ const KnowledgeBase = () => {
           :
           <Box sx={{pl: 3}}>
             <Typography variant="h4" sx={{alignContent: 'center'}}>
-              Please try create a new document
+              当前知识库为空，请尝试创建文档
             </Typography>
           </Box>
       }
@@ -211,7 +211,7 @@ const KnowledgeBase = () => {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Create New Document
+              新建文档
             </Typography>
           </Toolbar>
         </AppBar>
@@ -219,7 +219,7 @@ const KnowledgeBase = () => {
           <Toolbar />
           <FormGroup>
           <Stack spacing={2}>
-            <TextField label="Title" id="title" margin="normal" value={title} onChange={handleTitleChange} sx={{width: 600}} required/>
+            <TextField label="标题" id="title" margin="normal" value={title} onChange={handleTitleChange} sx={{width: 600}} required/>
             <Box sx={{width: 1000, height:350}}>
               <ReactQuill 
                 theme="snow"
@@ -227,7 +227,7 @@ const KnowledgeBase = () => {
                 style={{"height": "300px"}}
                 value={content} 
                 onChange={setContent}
-                placeholder={'Document Content'}
+                placeholder={'文档正文'}
               />
             </Box>
             <LoadingButton 
@@ -236,7 +236,7 @@ const KnowledgeBase = () => {
               variant="contained" 
               sx={{width: 100}}
               >
-              Create
+              创建
             </LoadingButton>
           </Stack>
         </FormGroup>

@@ -68,7 +68,7 @@ const Roles = () => {
       <SideBar />
       <Box display={'flex'}>
         <Typography variant="h5">
-          Roles
+          权限
         </Typography>
         <Button variant="contained" sx={{ml:121}} onClick={handleModalOpen}>Create</Button>
       </Box>
@@ -92,10 +92,10 @@ const Roles = () => {
                         <Stack spacing={2} direction="row">
                           {
                             role.active ?
-                              <Chip label="enabled" color="success" /> :
-                                <Chip label="disabled" color="error" />
+                              <Chip label="使用中" color="success" /> :
+                                <Chip label="禁用中" color="error" />
                           }
-                          <Button variant="contained" onClick={() => enterPermission(role.id)}>Settings</Button>
+                          <Button variant="contained" onClick={() => enterPermission(role.id)}>设置</Button>
                         </Stack>
                       </TableCell>
                     </TableRow>
@@ -105,7 +105,7 @@ const Roles = () => {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    no roles now
+                    当前列表为空
                   </TableCell>
                 </TableRow>
             }
@@ -127,7 +127,7 @@ const Roles = () => {
       >
         <Box sx={style}>
           <Tabs value={0} centered>
-            <Tab label="Create" />
+            <Tab label="创建" />
           </Tabs>
           <Box>
             <TabPanel value={0} index={0}>

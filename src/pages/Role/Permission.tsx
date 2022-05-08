@@ -46,15 +46,15 @@ const Permissions = () =>{
   }, [permissions, role]);
 
   const save = () => {
-    NotifySuccess("Permission saved")
+    NotifySuccess("权限设置保存成功")
   }
 
   const disable = () => {
-    NotifySuccess("Permission Disabled")
+    NotifySuccess("权限禁用成功")
   }
 
   const enable = () => {
-    NotifySuccess("Permission Enabled")
+    NotifySuccess("权限启用成功")
   }
 
   return (
@@ -71,8 +71,8 @@ const Permissions = () =>{
         <Table sx={{ minWidth: 900 }}>
           <TableHead>
             <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell component="th" scope="row">Scope</TableCell>
-              <TableCell align="right">Action</TableCell>
+              <TableCell component="th" scope="row">权限范围</TableCell>
+              <TableCell align="right">权限操作</TableCell>
             </TableRow>
             <Divider component={'tr'} />
           </TableHead>
@@ -119,10 +119,10 @@ const Permissions = () =>{
       <Stack spacing={2} direction="row">
         {
           role?.active ?
-            <Button variant="contained" color="error" onClick={disable}>Disable</Button> :
-              <Button variant="contained" color="success" onClick={enable}>Enable</Button>
+            <Button variant="contained" color="error" onClick={disable}>禁用</Button> :
+              <Button variant="contained" color="success" onClick={enable}>启用</Button>
         }
-        <Button variant="contained" color="primary" onClick={save}>Save</Button>
+        <Button variant="contained" color="primary" onClick={save}>保存</Button>
       </Stack>
     </Container>
   );

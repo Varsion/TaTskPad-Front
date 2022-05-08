@@ -29,7 +29,7 @@ const CreateIssue = ({projectId}: PropsType) => {
 
   useEffect(() => {
     if (organization) {
-      NotifySuccess('create success')
+      NotifySuccess('创建成功， 稍后跳转到详情页面')
       setTimeout(() => {
         window.location.reload()
       }, 5000)

@@ -79,7 +79,7 @@ const IssueContent = (props: IssueContentProps) => {
             }
           </Typography>
           <br />
-          <Typography variant="h6"> Description </Typography>
+          <Typography variant="h6"> 详情 </Typography>
           <br />
           <Typography variant="body1" gutterBottom component={'div'}>
             {

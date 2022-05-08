@@ -30,7 +30,7 @@ const CreateRole = () => {
 
   useEffect(() => {
     if (role) {
-      NotifySuccess('create success')
+      NotifySuccess('创建成功')
       setTimeout(() => {
         window.location.reload()
       }, 5000)
@@ -65,8 +65,8 @@ const CreateRole = () => {
   return (
     <FormGroup onChange={handleInputChange}>
       <form onSubmit={handleSubmit}>
-        <TextField fullWidth label="Role Name" id="name" margin="normal" value={values.name} required/>
-        <TextField fullWidth label="Role Description" id="description" margin="normal" value={values.description} required/>
+        <TextField fullWidth label="权限名称" id="name" margin="normal" value={values.name} required/>
+        <TextField fullWidth label="权限描述" id="description" margin="normal" value={values.description} required/>
         <Box style={{
           display: 'flex',
           justifyContent: 'center',
@@ -75,7 +75,7 @@ const CreateRole = () => {
             loading={loading} 
             variant="contained" 
             type="submit">
-              Create
+              创建
           </LoadingButton>
         </Box>
       </form>

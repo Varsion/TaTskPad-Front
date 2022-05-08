@@ -47,7 +47,7 @@ const Project = () => {
           <Grid item xs={4}>
             <Breadcrumbs aria-label="breadcrumb">
               <Typography variant="h5" color="text.primary">
-                Projects
+                项目
               </Typography>
             </Breadcrumbs>
           </Grid>
@@ -58,7 +58,7 @@ const Project = () => {
               endIcon={<AddIcon />}
               onClick={handleModalOpen}
             >
-              New
+              新建
             </Button>
           </Grid>
           <Grid item xs={12}>
@@ -80,7 +80,7 @@ const Project = () => {
       >
         <Box sx={style}>
           <Tabs value={0} centered>
-            <Tab label="Create" />
+            <Tab label="新建" />
           </Tabs>
           <Box>
             <TabPanel value={0} index={0}>

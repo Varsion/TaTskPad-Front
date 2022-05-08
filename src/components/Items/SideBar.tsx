@@ -54,7 +54,7 @@ const SideBar = () => {
       {/* Planning */}
       <List>
         <ListItemButton onClick={handlePlanClick}>
-          <ListItemText primary="Planning" />
+          <ListItemText primary="计划看板" />
           {plan ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
 
@@ -64,28 +64,28 @@ const SideBar = () => {
               <ListItemIcon>
                 <ListAltIcon />
               </ListItemIcon>
-              <ListItemText primary="ToDo"/>
+              <ListItemText primary="待办"/>
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 6 }} onClick={ () => {navigate("/")} } >
               <ListItemIcon>
                 <ViewWeekIcon />
               </ListItemIcon>
-              <ListItemText primary="Sprint"/>
+              <ListItemText primary="当前冲刺"/>
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 4 }} onClick={ () => {navigate("/members")} }>
               <ListItemIcon>
                 <PeopleOutlineIcon />
               </ListItemIcon>
-              <ListItemText primary="Members" />
+              <ListItemText primary="所有成员" />
             </ListItemButton>
 
             <ListItemButton sx={{ pl: 4 }} onClick={ () => {navigate("/roles")} }>
               <ListItemIcon>
                 <PermIdentityIcon />
               </ListItemIcon>
-              <ListItemText primary="Roles" />
+              <ListItemText primary="权限设置" />
             </ListItemButton>
           </List>
         </Collapse>
@@ -95,7 +95,7 @@ const SideBar = () => {
       {/* Development */}
       <List>
         <ListItemButton onClick={handleDevClick}>
-          <ListItemText primary="Development" />
+          <ListItemText primary="开发相关" />
           {dev ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
 
@@ -105,7 +105,7 @@ const SideBar = () => {
               <ListItemIcon>
                 <CodeIcon />
               </ListItemIcon>
-              <ListItemText primary="Codes" />
+              <ListItemText primary="团队代码库" />
             </ListItemButton>
           </List>
         </Collapse>

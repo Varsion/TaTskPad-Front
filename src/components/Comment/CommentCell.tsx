@@ -38,13 +38,13 @@ const CommentCell = (props:CommentCellProps) => {
 
   useEffect(() => {
     if(comment) {
-      NotifySuccess("Comment Deleted Success");
+      NotifySuccess("评论删除成功");
       setTimeout(() => {
         window.location.reload();
       }, 5000)
     }
     if(errors) {
-      NotifyError("Comment Deleted Failed");
+      NotifyError("评论删除失败");
     }
     if(error) {
       NotifyError(error.message);

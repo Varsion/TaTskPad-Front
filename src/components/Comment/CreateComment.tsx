@@ -21,7 +21,7 @@ const CreateComment = (props:CreateCommentProps) => {
 
   useEffect(() => {
     if(comment){
-      NotifySuccess('Comment created successfully')
+      NotifySuccess('评论创建成功')
     }
     if(errors){
       NotifyError(errors[0].attribute + " " + errors[0].message)
@@ -30,7 +30,7 @@ const CreateComment = (props:CreateCommentProps) => {
 
   const submit = () => {
     if(content === "" || content === "<p><br></p>"){
-      NotifyError("Comment content cannot be empty!")
+      NotifyError("评论内容不能为空")
     } else {
       createComment({
         variables: {
@@ -62,7 +62,7 @@ const CreateComment = (props:CreateCommentProps) => {
             variant="contained"
             onClick={submit}
           >
-              Comment
+            评论
           </LoadingButton>
         </Box>
     </Box>

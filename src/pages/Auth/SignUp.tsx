@@ -26,11 +26,11 @@ export default function SignIn() {
             <img src={logo} alt="logo" style={{maxWidth:200}}/>
           </Box>
           <Typography variant="h5" component="div">
-            Sign Up
+            注册
           </Typography>
 
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Already have an account? <Link href="/#/sign_in">{'sign in'}</Link>
+            已经有账户了？ <Link href="/#/sign_in">登陆</Link>
           </Typography>
           <SignUpForm />
         </CardContent>

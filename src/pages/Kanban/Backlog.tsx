@@ -125,7 +125,7 @@ export default function Backlog() {
         >
           <Box sx={style}>
             <Tabs value={tabValue} onChange={handleChange} centered>
-              <Tab label="Create" />
+              <Tab label="创建" />
             </Tabs>
             <Box>
             <TabPanel value={0} index={0}>

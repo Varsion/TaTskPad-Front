@@ -34,7 +34,7 @@ const CreateProject = (props: ProjectFrom) => {
 
   useEffect(() => {
     if (project) {
-      NotifySuccess('create success')
+      NotifySuccess('创建成功')
       setTimeout(() => {
         window.location.reload()
       }, 5000)
@@ -76,10 +76,10 @@ const CreateProject = (props: ProjectFrom) => {
   return (
     <FormGroup onChange={handleInputChange}>
       <form onSubmit={handleSubmit}>
-        <TextField fullWidth label="Project Name" id="name" margin="normal" value={values.name} required/>
-        <TextField fullWidth label="Project Key Word" id="keyWord" margin="normal" value={values.keyWord} required/>
-        <TextField fullWidth label="Project Code Repository" id="codeUrl" margin="normal" value={values.codeUrl}/>
-        <TextField fullWidth label="Project Class" id="class" margin="normal" value={'software'} required disabled/>
+        <TextField fullWidth label="项目名称" id="name" margin="normal" value={values.name} required/>
+        <TextField fullWidth label="项目关键词" id="keyWord" margin="normal" value={values.keyWord} required/>
+        <TextField fullWidth label="项目代码库链接" id="codeUrl" margin="normal" value={values.codeUrl}/>
+        <TextField fullWidth label="项目类别" id="class" margin="normal" value={'software'} required disabled/>
 
         <Box style={{
           display: 'flex',
@@ -89,7 +89,7 @@ const CreateProject = (props: ProjectFrom) => {
             loading={loading} 
             variant="contained" 
             type="submit">
-              Create
+              创建
           </LoadingButton>
         </Box>
       </form>

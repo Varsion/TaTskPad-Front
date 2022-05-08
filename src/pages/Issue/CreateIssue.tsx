@@ -64,7 +64,7 @@ const CreateIssue = () => {
 
   useEffect(() => {
     if(issue) {
-      NotifySuccess("Issue created successfully")
+      NotifySuccess("问题创建成功")
       console.log(issue)
     }
     if(errors) {
@@ -111,22 +111,22 @@ const CreateIssue = () => {
         <Toolbar />
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/#/">
-            Projects
+            项目
           </Link>
           <Link
             underline="hover"
             color="text.primary"
             href="/#/"
           >
-            Issue
+            问题
           </Link>
         </Breadcrumbs>
         <FormGroup onChange={handleInputChange}>
           <form onSubmit={handleSubmit}>
             <Stack spacing={2}>
-              <TextField label="Title" id="title" margin="normal" value={values.title} sx={{width: 600}} required/>
+              <TextField label="标题" id="title" margin="normal" value={values.title} sx={{width: 600}} required/>
               <FormControl sx={{width: 300}}>
-                <InputLabel id="demo-simple-select-label">Priority</InputLabel>
+                <InputLabel id="demo-simple-select-label">优先级</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="priority"
@@ -142,7 +142,7 @@ const CreateIssue = () => {
               </FormControl>
 
               <FormControl sx={{width: 300}}>
-                <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                <InputLabel id="demo-simple-select-label">类型</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="type"
@@ -150,14 +150,14 @@ const CreateIssue = () => {
                   onChange={handleType}
                   label="Type"
                 >
-                  <MenuItem value={'story'}>Story</MenuItem>
-                  <MenuItem value={'bug'}>Bug</MenuItem>
-                  <MenuItem value={'task'}>Task</MenuItem>
+                  <MenuItem value={'story'}>故事</MenuItem>
+                  <MenuItem value={'bug'}>故障</MenuItem>
+                  <MenuItem value={'task'}>任务</MenuItem>
                 </Select>
               </FormControl>
 
               <FormControl sx={{width: 300}}>
-                <InputLabel id="demo-simple-select-label">Assignee</InputLabel>
+                <InputLabel id="demo-simple-select-label">经办人</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="assignee"
@@ -175,14 +175,14 @@ const CreateIssue = () => {
                 </Select>
               </FormControl>
 
-              <TextField label="Estimate" id="estimate" margin="normal" value={values.estimate} sx={{width: 300}} />
+              <TextField label="原始预估时间" id="estimate" margin="normal" value={values.estimate} sx={{width: 300}} />
               <Box sx={{width: 1000}}>
                 <ReactQuill 
                   theme="snow"
                   id="description"
                   value={description} 
                   onChange={setDescription}
-                  placeholder={'Issue Description'}
+                  placeholder={'任务描述'}
                 />
               </Box>
               <LoadingButton 
@@ -191,7 +191,7 @@ const CreateIssue = () => {
                 type='submit' 
                 sx={{width: 100}}
                 >
-                  Create
+                  创建
                 </LoadingButton>
             </Stack>
           </form>

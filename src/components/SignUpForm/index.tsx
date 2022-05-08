@@ -44,7 +44,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if (account) {
-      NotifySuccess('Account created successfully')
+      NotifySuccess('账户创建成功')
       window.location.href = '/#/sign_in'
     }
     if (errors) {
@@ -67,13 +67,13 @@ const SignUpForm = () => {
     <FormGroup>
       <form onSubmit={handleSubmit}>
 
-        <TextField fullWidth label="Name" id="name" margin="normal" value={values.name} onChange={handleInputChange} required/>
+        <TextField fullWidth label="姓名" id="name" margin="normal" value={values.name} onChange={handleInputChange} required/>
 
-        <TextField fullWidth label="Email" id="email" margin="normal" value={values.email} onChange={handleInputChange} required/>
+        <TextField fullWidth label="邮件" id="email" margin="normal" value={values.email} onChange={handleInputChange} required/>
 
-        <TextField fullWidth label="Password" id="password" margin="normal" value={values.password} onChange={handleInputChange} type="password" required/>
+        <TextField fullWidth label="密码" id="password" margin="normal" value={values.password} onChange={handleInputChange} type="password" required/>
 
-        <TextField fullWidth label="Confirm Password" id="confirm" margin="normal" value={values.confirm} onChange={handleInputChange} type="password" required/>
+        <TextField fullWidth label="确认密码" id="confirm" margin="normal" value={values.confirm} onChange={handleInputChange} type="password" required/>
 
         <Box style={{
           display: 'flex',
@@ -83,7 +83,7 @@ const SignUpForm = () => {
             loading={loading}
             variant="contained" 
             type='submit' >
-              Sign Up
+              注册
           </LoadingButton>
           
         </Box>

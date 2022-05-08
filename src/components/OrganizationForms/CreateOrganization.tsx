@@ -26,7 +26,7 @@ const CreateOrganization = () => {
 
   useEffect(() => {
     if (organization) {
-      NotifySuccess('create success')
+      NotifySuccess('创建成功')
       setTimeout(() => {
         window.location.reload()
       }, 5000)
@@ -68,14 +68,14 @@ const CreateOrganization = () => {
   return (
     <FormGroup onChange={handleInputChange}>
       <form onSubmit={handleSubmit}>
-        <TextField fullWidth label="Organization Name" id="name" margin="normal" value={values.name} required/>
-        <TextField fullWidth label="Organization Email" id="email" margin="normal" value={values.email} required/>
-        <TextField select fullWidth label="Organization Class" id="class" margin="normal" value={organizationClass} onChange={handleClassSelect} required>
+        <TextField fullWidth label="组织名称" id="name" margin="normal" value={values.name} required/>
+        <TextField fullWidth label="组织邮件" id="email" margin="normal" value={values.email} required/>
+        <TextField select fullWidth label="组织类别" id="class" margin="normal" value={organizationClass} onChange={handleClassSelect} required>
             <MenuItem key={'Personal'} value={'Personal'}>
-              Personal
+              个人组织
             </MenuItem>
             <MenuItem key={'Business'} value={'Business'}>
-              Business
+              企业组织
             </MenuItem>
         </TextField>
         <Box style={{
@@ -86,7 +86,7 @@ const CreateOrganization = () => {
             loading={loading} 
             variant="contained" 
             type="submit">
-              Create
+              创建
           </LoadingButton>
         </Box>
       </form>

@@ -19,10 +19,10 @@ const Issue = () => {
       <Toolbar />
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/organization">
-          Organizations
+          组织
         </Link>
         <Link underline="hover" color="inherit" href="/project">
-          TaTskPad
+          任务看板
         </Link>
         <Link
           underline="hover"

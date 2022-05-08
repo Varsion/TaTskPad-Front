@@ -66,7 +66,7 @@ const CreateBucket = ({projectId}: PropsType) => {
   return (
     <FormGroup onChange={handleInputChange}>
       <form onSubmit={handleSubmit}>
-        <TextField fullWidth label="Bucket Name" id="name" margin="normal" value={values.name} required/>
+        <TextField fullWidth label="任务桶名称" id="name" margin="normal" value={values.name} required/>
 
         <Box style={{
           display: 'flex',
@@ -76,7 +76,7 @@ const CreateBucket = ({projectId}: PropsType) => {
             loading={loading} 
             variant="contained" 
             type="submit">
-              Create
+              创建
           </LoadingButton>
         </Box>
       </form>

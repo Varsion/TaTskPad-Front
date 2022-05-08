@@ -25,7 +25,7 @@ const Issue = () => {
             color="text.primary"
             href="/account"
           >
-            Account Profile
+            账户详情
           </Link>
         </Breadcrumbs>
         <Toolbar />
@@ -44,7 +44,7 @@ const Issue = () => {
               }}
             >
               <Typography variant="h6">
-                Avatar:
+                账户头像:
               </Typography>
               <Avatar src={account?.avatar} sx={{
                 width: 56, 
@@ -63,7 +63,7 @@ const Issue = () => {
               }}
             >
               <Typography variant="h6">
-                Name:
+                账户名称:
               </Typography>
               <Typography variant="h6">
                 {account?.name}
@@ -81,7 +81,7 @@ const Issue = () => {
               }}
             >
               <Typography variant="h6">
-                Email:
+                账户邮件:
               </Typography>
               <Typography variant="h6">
                 {account?.email}

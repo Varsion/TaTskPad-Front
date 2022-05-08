@@ -73,7 +73,7 @@ const Organization = () => {
         <Container maxWidth="lg">
           <Grid container spacing={2}>
             {loading ? (
-              <p>Loading...</p>
+              <p>加载中...</p>
             ) : Organizations?.length > 0 ? (
               Organizations.map((org: any, index: number) => (
                 <OrganizationCard
@@ -88,10 +88,10 @@ const Organization = () => {
                 <Toolbar />
                 <Stack justifyContent="center" alignItems="center" spacing={2}>
                   <Typography variant="subtitle1" color="text.primary">
-                    No Organizations
+                    No Organization
                   </Typography>
                   <Typography variant="subtitle1" color="text.primary">
-                    Join one or Create one now?
+                    申请加入一个组织或者创建新的组织
                   </Typography>
                   <Button
                     sx={{ float: "right" }}
@@ -99,7 +99,7 @@ const Organization = () => {
                     endIcon={<AddIcon />}
                     onClick={handleModalOpen}
                   >
-                    New
+                    新建
                   </Button>
                 </Stack>
               </Grid>
@@ -121,8 +121,8 @@ const Organization = () => {
       >
         <Box sx={style}>
           <Tabs value={tabValue} onChange={handleChange} centered>
-            <Tab label="Create" />
-            <Tab label="Join" />
+            <Tab label="创建" />
+            <Tab label="加入" />
           </Tabs>
           <Box>
             <TabPanel value={tabValue} index={0}>

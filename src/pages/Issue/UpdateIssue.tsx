@@ -121,22 +121,22 @@ const UpdateIssue = () => {
         <Toolbar />
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/#/">
-            Projects
+            项目
           </Link>
           <Link
             underline="hover"
             color="text.primary"
             href="/#/"
           >
-            Issue
+            问题
           </Link>
         </Breadcrumbs>
         <FormGroup onChange={handleInputChange}>
           <form onSubmit={handleSubmit}>
             <Stack spacing={2}>
-              <TextField label="Title" id="title" margin="normal" value={values.title} sx={{width: 600}} required/>
+              <TextField label="标题" id="title" margin="normal" value={values.title} sx={{width: 600}} required/>
               <FormControl sx={{width: 300}}>
-                <InputLabel id="demo-simple-select-label">Priority</InputLabel>
+                <InputLabel id="demo-simple-select-label">优先级</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="priority"
@@ -152,7 +152,7 @@ const UpdateIssue = () => {
               </FormControl>
 
               <FormControl sx={{width: 300}}>
-                <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                <InputLabel id="demo-simple-select-label">问题类型</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="type"
@@ -167,7 +167,7 @@ const UpdateIssue = () => {
               </FormControl>
 
               <FormControl sx={{width: 300}}>
-                <InputLabel id="demo-simple-select-label">Assignee</InputLabel>
+                <InputLabel id="demo-simple-select-label">经办人</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="assignee"
@@ -185,14 +185,14 @@ const UpdateIssue = () => {
                 </Select>
               </FormControl>
 
-              <TextField label="Estimate" id="estimate" margin="normal" value={values.estimate} sx={{width: 300}} />
+              <TextField label="原始预估时间" id="estimate" margin="normal" value={values.estimate} sx={{width: 300}} />
               <Box sx={{width: 1000}}>
                 <ReactQuill 
                   theme="snow"
                   id="description"
                   value={description} 
                   onChange={setDescription}
-                  placeholder={'Issue Description'}
+                  placeholder={'问题描述'}
                 />
               </Box>
               <LoadingButton 
@@ -201,7 +201,7 @@ const UpdateIssue = () => {
                 type='submit' 
                 sx={{width: 100}}
                 >
-                  Update
+                  更新
                 </LoadingButton>
             </Stack>
           </form>

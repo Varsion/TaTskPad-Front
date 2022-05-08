@@ -49,9 +49,9 @@ const OrganizationCard = (props: OrganizationProps) => {
             <Typography gutterBottom variant="h6" component="div">
               {name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Organization Description
-            </Typography>
+            {/* <Typography variant="body2" color="text.secondary">
+              组织描述
+            </Typography> */}
           </CardContent>
         </CardActionArea>
       </Card>

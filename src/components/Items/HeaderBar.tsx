@@ -49,17 +49,17 @@ const HeaderBar = () => {
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, mx: 1  }}>
           <List sx={{ display: { xs: 'none', md: 'flex' } }}>
           <ListItem button key={'Organizations'} onClick={ () => {navigate("/organization")} }>
-              <ListItemText primary={'Organizations'}>
+              <ListItemText primary={'组 织'} sx={{width: 100}}>
                 Organizations
               </ListItemText>
             </ListItem>
             <ListItem button key={'Projects'} onClick={ () => {navigate("/project")} }>
-              <ListItemText primary={'Projects'}>
+              <ListItemText primary={'项 目'} sx={{width: 100}}>
                 Projects
               </ListItemText>
             </ListItem>
             <ListItem button key={'KnowledgeBase'} onClick={ () => {navigate("/knowledgebase")} }>
-              <ListItemText primary={'KnowledgeBase'}>
+              <ListItemText primary={'知识库'} sx={{width: 100}}>
                 KnowledgeBase
               </ListItemText>
             </ListItem>
@@ -86,8 +86,8 @@ const HeaderBar = () => {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={ () => {navigate("/account")} }>Profile</MenuItem>
-            <MenuItem onClick={logout}>Logout</MenuItem>
+            <MenuItem onClick={ () => {navigate("/account")} }>账户详情</MenuItem>
+            <MenuItem onClick={logout}>登出</MenuItem>
           </Menu>
         </Box>
       </Toolbar>

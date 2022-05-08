@@ -26,10 +26,10 @@ const IssueStatusCard = (props: IssueStatusProps) => {
     <Card sx={{ minWidth: 300 }}>
       <CardContent>
         <Box>
-          <Box className="message">Details</Box>
+          <Box className="message">任务卡片细节</Box>
           <Box className="TopContainer">
             <Box className="container">
-              <Box sx={{width:50}}>Assignee</Box>
+              <Box sx={{width:50}}>经办人</Box>
               <Box className="messageOne">
                 {
                   assignee ? 
@@ -39,13 +39,13 @@ const IssueStatusCard = (props: IssueStatusProps) => {
               </Box>
             </Box>
             <Box className="container">
-              <Box sx={{width:50}}>Author</Box>
+              <Box sx={{width:50}}>创建人</Box>
               <Box className="messageOne">
                 <Chip avatar={<Avatar src={author?.avatar} />} label={author?.name} />
               </Box>
             </Box>
             <Box className="container">
-              <Box sx={{width:50}}>Labels</Box>
+              <Box sx={{width:50}}>标签</Box>
               <Stack direction="row" spacing={2} className="messageOne">
                 {
                   labels?.map((label: string) => (
@@ -57,11 +57,11 @@ const IssueStatusCard = (props: IssueStatusProps) => {
               </Stack>
             </Box>
             <Box className="container">
-              <Box sx={{width:50}}>Priority</Box>
+              <Box sx={{width:50}}>优先级</Box>
               <Box className="right-boxTwo">{priority}</Box>
             </Box>
             <Box className="container">
-              <Box sx={{width:50}}>Estimate</Box>
+              <Box sx={{width:50}}>原始预估时间</Box>
               <Box className="right-boxTwo">{estimate}</Box>
             </Box>
           </Box>

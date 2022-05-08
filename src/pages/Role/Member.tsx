@@ -56,7 +56,7 @@ const Members = () => {
   const handleInviteModalClose = () => setInviteModal(false);
   const handleInviteModalOpen = () => setInviteModal(true);
   const handleInvite = () => {
-    NotifySuccess('Invite email will send in later');
+    NotifySuccess('邀请邮件稍后会发出');
     setTimeout(() => {
       handleInviteModalClose();
     }, 5000);
@@ -73,7 +73,7 @@ const Members = () => {
       }
       return member;
     }));
-    NotifySuccess('Role Updated Success');
+    NotifySuccess('成员权限更新成功');
     setTimeout(() => {
       handleModalClose();
     }, 5000);
@@ -87,7 +87,7 @@ const Members = () => {
       <SideBar />
       <Box display={'flex'}>
         <Typography variant="h5">
-          Members
+          所有成员
         </Typography>
         <Button variant="contained" sx={{ml:120}} onClick={handleInviteModalOpen}>Invite</Button>
       </Box>
@@ -97,10 +97,10 @@ const Members = () => {
         <Table sx={{ minWidth: 900 }}>
           <TableHead>
             <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell component="th" scope="row">Members Name</TableCell>
-              <TableCell component="th" scope="row">Enter Time</TableCell>
-              <TableCell component="th" scope="row">Role</TableCell>
-              <TableCell component="th" scope="row" align="right">Action</TableCell>
+              <TableCell component="th" scope="row">成员姓名</TableCell>
+              <TableCell component="th" scope="row">加入时间</TableCell>
+              <TableCell component="th" scope="row">权限</TableCell>
+              <TableCell component="th" scope="row" align="right">操作</TableCell>
             </TableRow>
             <Divider />
           </TableHead>
@@ -124,7 +124,7 @@ const Members = () => {
                     </TableCell>
                     <TableCell align="right" sx={{display: 'flex'}} >
                       <Stack spacing={2} direction="row">
-                        <Button variant="contained" onClick={() => handleModalOpen(member.role, member.id)}>Settings</Button>
+                        <Button variant="contained" onClick={() => handleModalOpen(member.role, member.id)}>设置</Button>
                       </Stack>
                     </TableCell>
                   </TableRow>
@@ -153,7 +153,7 @@ const Members = () => {
       >
         <Box sx={style}>
           <Tabs value={0} centered>
-            <Tab label="Member Role Update" />
+            <Tab label="设置成员权限" />
           </Tabs>
           <Box>
             <TabPanel value={0} index={0}>
@@ -161,7 +161,7 @@ const Members = () => {
                 marginTop: 10,
               }}>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                  <InputLabel id="demo-simple-select-label">权限</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -169,9 +169,9 @@ const Members = () => {
                     label="Age"
                     onChange={handleChange}
                   >
-                    <MenuItem value={'Admin'}>Admin</MenuItem>
-                    <MenuItem value={'Developer'}>Developer</MenuItem>
-                    <MenuItem value={'Manger'}>Manager</MenuItem>
+                    <MenuItem value={'Admin'}>超级管理员</MenuItem>
+                    <MenuItem value={'Developer'}>开发者</MenuItem>
+                    <MenuItem value={'Manger'}>管理员</MenuItem>
                   </Select>
                 </FormControl>
 
@@ -184,7 +184,7 @@ const Members = () => {
                       variant="contained"
                       onClick={handleSubmit}
                     >
-                        Update
+                        更新
                     </Button>
                   </Box>
               </FormGroup>

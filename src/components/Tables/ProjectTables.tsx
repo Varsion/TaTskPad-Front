@@ -57,9 +57,9 @@ const ProjectTable = (props: ProjectTableProps) => {
         <TableHead>
           <TableRow>
             <TableCell>🌟</TableCell>
-            <TableCell align='center'>Name</TableCell>
-            <TableCell align='center'>Key</TableCell>
-            <TableCell align='center'>Owner</TableCell>
+            <TableCell align='center'>项目名称</TableCell>
+            <TableCell align='center'>关键词</TableCell>
+            <TableCell align='center'>创建人</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

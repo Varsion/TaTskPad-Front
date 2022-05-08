@@ -16,7 +16,7 @@ const JoinOrganization = () => {
 
   useEffect(() => {
     if (organization) {
-      NotifySuccess('Request submit success')
+      NotifySuccess('请求提交成功')
       setTimeout(() => {
         window.location.reload()
       }, 5000)
@@ -47,7 +47,7 @@ const JoinOrganization = () => {
   return (
     <FormGroup onChange={handleInputChange}>
       <form onSubmit={handleSubmit}>
-        <TextField fullWidth label="Organization Invite Code" id="code" margin="normal" value={code} required/>
+        <TextField fullWidth label="组织邀请码" id="code" margin="normal" value={code} required/>
         <Box style={{
           display: 'flex',
           justifyContent: 'center',
@@ -56,7 +56,7 @@ const JoinOrganization = () => {
             loading={loading} 
             variant="contained" 
             type="submit">
-              Submit Request
+              提交申请
           </LoadingButton>
         </Box>
       </form>

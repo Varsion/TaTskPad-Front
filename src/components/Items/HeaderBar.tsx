@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router';
 import { ClearToken } from '../../components/Session';
 import { NotifySuccess } from '../../components/Notify';
 
-import SearchItem from "../../components/Items/SearchItem"
-
 const HeaderBar = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -60,7 +58,7 @@ const HeaderBar = () => {
                 Projects
               </ListItemText>
             </ListItem>
-            <ListItem button key={'KnowledgeBase'}>
+            <ListItem button key={'KnowledgeBase'} onClick={ () => {navigate("/knowledgebase")} }>
               <ListItemText primary={'KnowledgeBase'}>
                 KnowledgeBase
               </ListItemText>

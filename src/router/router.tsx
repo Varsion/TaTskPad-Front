@@ -14,6 +14,7 @@ import Roles from "../pages/Role/Role";
 import Permissions from "../pages/Role/Permission";
 import UpdateIssue from "../pages/Issue/UpdateIssue";
 import AccountPage from "../pages/Account/AccountPage";
+import KnowledgeBase from "../pages/KnowledgeBase/KnowledgeBase";
 
 export default function Router() {
   return (
@@ -39,6 +40,8 @@ export default function Router() {
         <Route path="/issue/:keyNumber/update" element={<UpdateIssue />} />
 
         <Route path="/account" element={<AccountPage />} />
+
+        <Route path="/knowledgebase" element={<KnowledgeBase />} />
       </Routes>
     </BrowserRouter>
   );

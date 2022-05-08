@@ -68,10 +68,10 @@ export default function Backlog() {
         <Toolbar />
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/#/">
-            Projects
+            项目
           </Link>
           <Link underline="hover" color="inherit" href="/#/">
-            TaTskPad
+            任务看不
           </Link>
           <Link
             underline="hover"
@@ -79,7 +79,7 @@ export default function Backlog() {
             href="/#/"
             aria-current="page"
           >
-            Backlog
+            产品积压
           </Link>
         </Breadcrumbs>
         <Box sx={{ display: "flex", flexGrow: 1, mt: 3 }}>
@@ -98,10 +98,10 @@ export default function Backlog() {
           <Grid item xs={4}>
             <Stack direction="row-reverse" spacing={1}>
               <Button variant="contained" size="small" endIcon={<AddIcon />} onClick={handleBucketModalOpen}>
-                Create Bucket
+                创建新问题桶
               </Button>
               <Button variant="contained" size="small" endIcon={<AddIcon />} onClick={createIssue}>
-                New Issue
+                新建问题
               </Button>
             </Stack>
           </Grid>

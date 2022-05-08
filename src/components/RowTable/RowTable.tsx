@@ -181,17 +181,17 @@ function Row(props: { row: BucketRow }) {
                   {
                     sprint.isCurrent ?
                     <Button variant="outlined" color="secondary" size="small" onClick={handleEnd}>
-                      Complete Sprint
+                      结束冲刺
                     </Button> 
                     :
                     <Button variant="contained" color="success" size="small" onClick={handleStart}>
-                      Start Sprint
+                      开始冲刺
                     </Button>
                   }
                 </Stack>
                 :
                 <Button variant="contained" size="small" onClick={handleModalOpen}>
-                  Create Sprint
+                  创建冲刺
                 </Button>
             }
           </ButtonGroup>

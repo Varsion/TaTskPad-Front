@@ -12,6 +12,7 @@ export const GET_ISSUE = gql`
       assignee {
         id
       }
+      bucketId
       estimate
       comments {
         id

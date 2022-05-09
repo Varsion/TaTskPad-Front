@@ -6,6 +6,7 @@ import { LoadingButton } from "@mui/lab";
 import { SelectChangeEvent } from "@mui/material/Select";
 import { NotifyError, NotifySuccess } from "../../components/Notify";
 import { UPDATE_ISSUE, GET_ISSUE } from "../../actions/issue";
+import { GET_BUCKET_LIST } from "../../actions/bucket";
 import { GET_MEMBERS } from "../../actions/organization";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -28,11 +29,20 @@ const UpdateIssue = () => {
   const navigate = useNavigate();
 
   const organizationId = localStorage.getItem("organizationId");
+  const projectId = localStorage.getItem("projectId");
 
   const [updateIssue, { data, error, loading }] = useMutation(UPDATE_ISSUE)
   const { data: dataIssue, loading: loadingIssue } = useQuery(GET_ISSUE, {
     variables: { keyNumber }
   })
+
+  const [bucketId, setBucketId] = useState("");
+
+  const { data: dataBuckets, loading: loadingBucket } = useQuery(GET_BUCKET_LIST, {
+    variables: { projectId }
+  })
+
+  const buckets = dataBuckets?.project?.buckets;
 
   const updateIssueData = data?.updateIssue?.issue
   const updateIssueError = dataIssue?.updateIssue?.errors
@@ -60,6 +70,10 @@ const UpdateIssue = () => {
     setPriority(event.target.value as string);
   };
 
+  const handleBucketId = (event: SelectChangeEvent) => {
+    setBucketId(event.target.value as string);
+  };
+
   const handleAssignee = (event: SelectChangeEvent) => {
     setAssignee(event.target.value as string);
   };
@@ -70,11 +84,11 @@ const UpdateIssue = () => {
 
   useEffect(() => {
     if(dataIssue) {
-      console.log(dataIssue.issue)
       SetValues(dataIssue.issue)
       setPriority(dataIssue.issue.priority)
       setDescription(dataIssue.issue.description)
       setAssignee(dataIssue.issue.assignee?.id)
+      setBucketId(dataIssue.issue.bucketId)
     }
     if(updateIssueError) {
       NotifyError(updateIssueError[0].message)
@@ -85,7 +99,7 @@ const UpdateIssue = () => {
         navigate("/issue/" + keyNumber)
       } , 5000)
     }
-  }, [dataIssue, updateIssueData, updateIssueError])
+  }, [dataIssue, updateIssueData, updateIssueError, dataBuckets])
 
   const handleInputChange = (e: any) => {
     const { id, value } = e.target;
@@ -106,6 +120,7 @@ const UpdateIssue = () => {
           priority,
           title,
           genre,
+          bucketId,
           assigneeId: assignee,
           estimate
         }
@@ -179,6 +194,27 @@ const UpdateIssue = () => {
                     members?.map((member: any, index: number) => {
                       return (
                         <MenuItem key={index} value={member.id}><Chip avatar={<Avatar src={member.avatar} />} label={member.name} /></MenuItem>
+                      )
+                    })
+                  }
+                </Select>
+              </FormControl>
+
+              <FormControl sx={{width: 300}}>
+                <InputLabel id="demo-simple-select-label">问题桶</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="assignee"
+                  value={bucketId}
+                  onChange={handleBucketId}
+                  label="Assignee"
+                >
+                  {
+                    buckets?.map((bucket: any, index: number) => {
+                      return (
+                        <MenuItem key={index} value={bucket.id}>
+                          {bucket.name}
+                        </MenuItem>
                       )
                     })
                   }

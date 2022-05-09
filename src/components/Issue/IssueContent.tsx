@@ -61,7 +61,7 @@ const IssueContent = (props: IssueContentProps) => {
     }
     if(newStatus) {
       setStatus(newStatus)
-      NotifySuccess(`Issue status updated to ${newStatus}`)
+      NotifySuccess(`该问题的状态成功更新到 ${newStatus}`)
     }
     if(updateError) {
       NotifyError(updateError[0].attribute+ " " + updateError[0].message)

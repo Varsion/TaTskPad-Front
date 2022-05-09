@@ -22,7 +22,7 @@ const HeaderBar = () => {
   };
 
   const logout = () => {
-    NotifySuccess("Logout Success");
+    NotifySuccess("注销成功");
     ClearToken();
     navigate('/sign_in');
   }

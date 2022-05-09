@@ -128,7 +128,7 @@ function Row(props: { row: BucketRow }) {
         NotifyError(createData.createSprint.errors[0].attribute + " " + createData.createSprint.errors[0].message);
       }
       if (createData?.createSprint?.sprint) {
-        NotifySuccess("Sprint create success");
+        NotifySuccess("新的冲刺创建成功");
       }
     }
 
@@ -137,7 +137,7 @@ function Row(props: { row: BucketRow }) {
         NotifyError(startData.startSprint.errors[0].message);
       }
       if (startData?.startSprint?.sprint) {
-        NotifySuccess("Sprint Start success");
+        NotifySuccess("新的冲刺开始了");
       }
     }
     if(endData) {
@@ -145,7 +145,7 @@ function Row(props: { row: BucketRow }) {
         NotifyError(endData.endSprint.errors[0].attribute + " " + endData.endSprint.errors[0].message);
       }
       if (endData?.endSprint?.sprint) {
-        NotifySuccess("Sprint Complete success");
+        NotifySuccess("新的冲刺完成了");
       }
     }
   } , [createData, startData, endData]);

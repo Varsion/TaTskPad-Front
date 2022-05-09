@@ -27,7 +27,7 @@ const CreateBucket = ({projectId}: PropsType) => {
 
   useEffect(() => {
     if (bucket) {
-      NotifySuccess('create success')
+      NotifySuccess('问题桶创建成功')
       console.log(bucket)
       setTimeout(() => {
         window.location.reload()

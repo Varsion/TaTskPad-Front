@@ -97,7 +97,7 @@ const KnowledgeBase = () => {
       NotifyError(createError[0].attribute+ ' ' + createError[0].message)
     }
     if(createData) {
-      NotifySuccess('Document created successfully')
+      NotifySuccess('文档创建成功！')
     }
     if(defaultDocument) {
       setDocument(defaultDocument)

@@ -94,7 +94,7 @@ const UpdateIssue = () => {
       NotifyError(updateIssueError[0].message)
     }
     if(updateIssueData) {
-      NotifySuccess("Issue updated successfully")
+      NotifySuccess("问题详情更新成功")
       setTimeout(() => {
         navigate("/issue/" + keyNumber)
       } , 5000)

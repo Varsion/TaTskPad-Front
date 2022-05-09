@@ -190,6 +190,7 @@ const UpdateIssue = () => {
                   onChange={handleAssignee}
                   label="Assignee"
                 >
+                  <MenuItem value={""}><Chip avatar={<Avatar/>} label="未分配" /></MenuItem>
                   {
                     members?.map((member: any, index: number) => {
                       return (

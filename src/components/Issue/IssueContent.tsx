@@ -12,6 +12,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { GET_ISSUE, UPDATE_STATUS } from "../../actions/issue";
 import { GET_WORKFLOW_STEPS } from "../../actions/project";
 import CommentContainer from "../Comment/CommentContainer";
+import { useNavigate } from "react-router-dom"
 
 interface IssueContentProps {
   keyNumber: any;
@@ -21,6 +22,7 @@ const IssueContent = (props: IssueContentProps) => {
   const { keyNumber } = props;
   const projectId = "26d1021e-3793-48cb-b943-595758139690";
 
+  const navigate = useNavigate(); 
   const { data, loading } = useQuery(GET_ISSUE, {
     variables: { keyNumber }
   })
@@ -132,7 +134,7 @@ const IssueContent = (props: IssueContentProps) => {
                 display: 'flex',
                 justifyContent: 'center',
               }}>
-                <Button variant="contained">Update</Button>
+                <Button variant="contained" onClick={() => navigate('/issue/'+ keyNumber + '/update')}>Update</Button>
               </Grid>
             </Grid>
 

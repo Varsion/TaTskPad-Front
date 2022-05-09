@@ -86,7 +86,7 @@ export default function Kanban() {
         <Toolbar />
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/#/">
-            Projects
+            项目
           </Link>
           <Link
             underline="hover"
@@ -94,7 +94,7 @@ export default function Kanban() {
             href="/#/"
             aria-current="page"
           >
-            Sprint Board
+            冲刺看板
           </Link>
         </Breadcrumbs>
         <Box sx={{ display: 'flex', flexGrow: 1, mt:3 }}>
